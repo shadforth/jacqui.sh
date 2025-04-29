@@ -6,83 +6,60 @@ export const homeStatic: RequiredDataFromCollectionSlug<'pages'> = {
   _status: 'published',
   hero: {
     type: 'lowImpact',
-    richText: {
-      root: {
-        type: 'root',
-        children: [
-          {
-            type: 'heading',
-            children: [
-              {
-                type: 'text',
-                detail: 0,
-                format: 0,
-                mode: 'normal',
-                style: '',
-                text: 'Payload Website Template',
-                version: 1,
-              },
-            ],
-            direction: 'ltr',
-            format: '',
-            indent: 0,
-            tag: 'h1',
-            version: 1,
-          },
-          {
-            type: 'paragraph',
-            children: [
-              {
-                type: 'link',
-                children: [
-                  {
-                    type: 'text',
-                    detail: 0,
-                    format: 0,
-                    mode: 'normal',
-                    style: '',
-                    text: 'Visit the admin dashboard',
-                    version: 1,
-                  },
-                ],
-                direction: 'ltr',
-                fields: {
-                  linkType: 'custom',
-                  newTab: false,
-                  url: '/admin',
-                },
-                format: '',
-                indent: 0,
-                version: 2,
-              },
-              {
-                type: 'text',
-                detail: 0,
-                format: 0,
-                mode: 'normal',
-                style: '',
-                text: ' to make your account and seed content for your website.',
-                version: 1,
-              },
-            ],
-            direction: 'ltr',
-            format: '',
-            indent: 0,
-            textFormat: 0,
-            version: 1,
-          },
-        ],
-        direction: 'ltr',
-        format: '',
-        indent: 0,
-        version: 1,
-      },
-    },
+    richText: [],
+    links: [],
+    media: '',
   },
   meta: {
-    description: 'An open-source website built with Payload and Next.js.',
-    title: 'Payload Website Template',
+    title: 'Art Gallery',
+    description: 'A collection of art',
+    image: '{{IMAGE}}',
   },
   title: 'Home',
-  layout: [],
+  layout: [
+    {
+      blockName: 'Pixel Art Grid',
+      blockType: 'artGrid',
+      images: [
+        {
+          src: '/images/red-house_640.png',
+          alt: 'Red House Pixel Art',
+        },
+        {
+          src: '/images/spyro_640.png',
+          alt: 'Spyro Pixel Art',
+        },
+        {
+          src: '/images/phoenix-arizona_640.png',
+          alt: 'Phoenix Arizona Pixel Art',
+        },
+        {
+          src: '/images/pigeon_768.gif',
+          alt: 'Pigeon Pixel Art',
+        },
+        {
+          src: '/images/oh-the-ironing_640.png',
+          alt: 'Oh The Ironing Pixel Art',
+        },
+        {
+          src: '/images/jigglypuff_640.png',
+          alt: 'Jigglypuff Pixel Art',
+        },
+        {
+          src: '/images/duo_640.png',
+          alt: 'Duo Pixel Art',
+        },
+        {
+          src: '/images/witch_640.png',
+          alt: 'Witch Pixel Art',
+        },
+        {
+          src: '/images/grandma_640.png',
+          alt: 'Grandma Pixel Art',
+        },
+      ],
+    },
+  ],
+  createdAt: '2023-06-14T12:00:00.000Z',
+  updatedAt: '2023-06-14T12:00:00.000Z',
 }
