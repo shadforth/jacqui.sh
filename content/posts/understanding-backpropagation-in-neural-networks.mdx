@@ -1,0 +1,72 @@
+---
+title: "Understanding backpropagation in neural networks"
+date: "2021-02-28"
+categories: ["AI", "ML"]
+description: "A plain-English guide to how neural networks learn: forward propagation, activation functions, loss, gradient descent, and backpropagation."
+---
+
+Backpropagation is an algorithm that enables a neural network to learn from its mistakes.
+
+In this post, my goal is to explain the key concepts involved in backpropagation and why it is a fundamental part of training a neural network model. But first, in order to understand how backpropagation works, we need to understand how forward propagation works.
+
+### An introduction to neural networks
+
+A neural network is comprised of simple, interconnected elements called neurons. Each neuron is capable of making basic calculations. A group of neurons creates a layer in the network. At least three layers are required to construct a multi-layered neural network: an input layer, an output layer, and one or several hidden layers in between. Hidden layers are an integral part of this equation – they perform non-linear transformations of inputs entered into the network.
+
+Neural networks are commonly used for data classification and pattern recognition problems. In data classification, the output value represents the calculated similarity of an input on a discrete number of outputs. For example, in handwriting recognition, the output will be a vector of percentages that represent how closely an input matched on every letter of the alphabet. If the model uses [supervised learning](https://en.wikipedia.org/wiki/Supervised_learning), the output value is compared to a previously known expected value. The difference between the expected and actual value represents the network's accuracy. In contrast, a neural network using [unsupervised learning](https://en.wikipedia.org/wiki/Unsupervised_learning) means that we don't know the output value. This type of learning is typically used to find patterns in data.
+
+### What is forward propagation?
+
+Forward propagation describes the process of passing one or more input values through each layer of a network. The final layer, known as the output layer, generates one or more output values.
+
+Let's illustrate this with a concrete example.
+
+Imagine a model that predicts the likelihood of a football team winning a particular game. Input variables fed into this network may include: the opponent team, the time and day the game is being played, the weather, the players involved, and past results against the rival team.
+
+Initially, each variable is multiplied by a randomly generated weight at each neuron, where a large weight implies that the variable has a bigger impact on the outcome of the prediction. In this example, we determine the output of this model to be a single number that represents the probability of our football team claiming victory. To facilitate the forward propagation process, each neuron's value is calculated in three steps:
+
+1. The input value is multiplied by a weight value of that neuron
+2. The value from Step 1 is passed through an activation function in the neuron
+3. The resulting value is fed through to a neuron in the next layer of the network
+
+### What is an activation function?
+
+Activation functions determine whether or not a given neuron should be turned on or off; in other words, activated or deactivated. This allows the network to determine which neurons are relevant for the model's prediction. Common activation functions include the Rectified Linear Unit (ReLU), sigmoid, and tanh.
+
+In a neural network model, the purpose of an activation function is to introduce non-linearity into the output of a neuron. A non-linear activation function has an associated derivative function with regard to its inputs, making backpropagation possible. We will see later that backpropagation relies on the chain rule from calculus to compute derivatives and update neuron values. Without non-linearity, a neural network would behave like a [single-layer perceptron](https://en.wikipedia.org/wiki/Perceptron), which have no hidden layers. Further, activation functions enable us to normalise the output of each neuron. Typically, this involves converting neuron output values to a number between 0 and 1 or -1 and 1. We use the sigmoid and tanh functions to convert neuron values respectively.
+
+### When does backpropagation happen?
+
+Once the forward propagation process is complete and a prediction value is generated, we need to compare that output against the value that we actually wanted. Coming back to our football example, it is unlikely that our neural network would predict the correct outcome of a game on its first attempt. This is where the training component of neural networks comes in, and, hence, where backpropagation begins. To borrow from the seminal paper, *Learning representations by back-propagating errors*, by Geoffrey Hinton, David Rumelhart, and Ronald Williams from 1986:
+
+> The motivation for backpropagation is to train a multi-layered neural network such that it can learn the appropriate internal representations to allow it to learn any arbitrary mapping of input to output.
+
+Recall that each neuron is initially assigned a random weight that determines its significance in the model's prediction. Backpropagation is a method that involves traversing through the network in reverse, adjusting neuron weights such that prediction accuracy improves and the network is able to better learn on arbitrary input values. Working back to front, we use the [chain rule](https://en.wikipedia.org/wiki/Chain_rule) to apply changes from each layer to the previous layer. The chain rule, a formula from calculus, allows us to compute the derivative of composite functions. Each layer in the network represents a function. So, how do we figure out *what* to adjust neuron weights to during backpropagation? First, we need to compute the difference between expected and actual output values with an optimisation technique known as the loss function.
+
+### What is the loss function?
+
+The loss function – or cost function – maps decisions to real numbers that represent some "cost" associated with making that decision. We use the loss function to calculate the error between predicted and actual values. Two common loss functions are cross-entropy and Mean Squared Error (MSE).
+
+After this value is calculated, our goal is to reduce the error, i.e. decrease the value. To do this, we make use of an optimisation algorithm known as gradient descent.
+
+### What is gradient descent?
+
+In the field of applied mathematics, there is a family of algorithms dedicated to solving optimisation problems. These centre around the idea that the inputs of a function can be tweaked in order to maximise or minimise output values. With this in mind, gradient descent can be described as an optimisation algorithm whose purpose is to find the local minimum of a differentiable function. This is done by iteratively searching for the steepest slope, i.e. derivative, in order to descend to the global minimum. In our model, gradient descent is used on the loss function to minimise its value.
+
+Once gradient descent can no longer decrease the loss function, it's said to have converged. In each iteration of gradient descent, the size of the step we take is known as the learning rate. Setting this value appropriately is incredibly important – if the learning rate is too big, we risk overshooting the global minimum. If it's too small, we risk a painfully slow convergence. After we have discovered the global minimum for a given function, we can update the associated neuron's weight. This repeats until all neuron weights in the network have been optimised such that errors can no longer be reduced.
+
+### Tying it all together
+
+In summary, we discussed the key components involved in forward propagation and backpropagation with regard to neural networks.
+
+To recap, forward propagation is the process of passing values through a neural network using simple linear algebra equations paired with activation functions. Activation functions help to determine which neurons are important and which neurons are not. The output of a neural network is a prediction on the connection between input data.
+
+Once forward propagation generates an output value, we look to improve the performance of the model by training the network using backpropagation. This involves reducing the error of neuron weights using the loss function, which is achieved by implementing gradient descent and the chain rule. The goal of this process is to reduce the value of the loss function and, as such, improve the network's accuracy. When the point is reached where gradient descent no longer reduces the loss function, the algorithm is said to have converged. This tells us we are at the theoretical limit of the network's prediction accuracy. This process of adjusting neuron weights in each hidden layer of the network is the essence of backpropagation.
+
+I hope you found this guide useful. Either way, I would love your feedback. Send me an [email](mailto:hello@jacqui.sh) or get in touch on [LinkedIn](https://www.linkedin.com/in/jacshad). Thank you for reading!
+
+### References
+
+- [7 Types of Neural Network Activation Functions: How to Choose? - MissingLink.ai](https://missinglink.ai/guides/neural-network-concepts/7-types-neural-network-activation-functions-right)
+- [A Step-by-Step Backpropagation Example - Matt Mazur](https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example)
+- [Optimizing gradient descent - Sebastian Ruder](https://ruder.io/optimizing-gradient-descent)

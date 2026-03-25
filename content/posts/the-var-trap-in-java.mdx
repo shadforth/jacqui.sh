@@ -1,0 +1,66 @@
+---
+title: "The 'var' trap in Java"
+date: "2026-01-09"
+categories: ["Java", "Programming"]
+description: "Since Java 10, the var keyword opened up local variable type inference — but indiscriminate use costs readability. Here's when to use it sparingly."
+---
+
+Since Java 10, the `var` keyword opened up the possibility for local variable type inference. It helps us turn Java's often verbose, boilerplate-y code into cleaner and more concise code.
+
+However, this conciseness comes at a cost.
+
+If a teammate has to hover their mouse over a variable to check its type, or click through to a method definition just to understand what a line of code does, then frankly, `var` has failed.
+
+<figure className="not-prose" style={{ float: 'right', margin: '0 0 1rem 1.25rem', maxWidth: '250px' }}>
+  <img
+    src="https://bear-images.sfo2.cdn.digitaloceanspaces.com/jacquelineshadforth/the-varent-trap.webp"
+    alt="Lindsay Lohan doesn't use vars"
+    width="250"
+    style={{ display: 'block', width: '100%', height: 'auto' }}
+  />
+  <figcaption style={{ fontSize: '0.875rem', color: 'hsl(var(--muted-foreground))', marginTop: '0.5rem', lineHeight: 1.45, fontStyle: 'italic' }}>
+    &ldquo;You wanna know the real difference between us? I know how to use vars and you don&rsquo;t&rdquo; &ndash; Lindsay Lohan, probably
+  </figcaption>
+</figure>
+
+<div style={{ clear: 'both' }} />
+
+### The loss of explicit intent
+
+In reality, using `var` indiscriminately leads to hard-to-read code, where the data type is hidden from the reader. Readability should be a critical component of your codebase, more so than cleverly written code. This is especially important during PR reviews.
+
+The biggest problem with `var` is the lack of context. When you explicitly declare a type, you're telling the next developer exactly what the plan is. You're communicating **clearly** and **explicitly**.
+
+```java
+// ... from this...
+ArrayList<String> users = new ArrayList<String>();
+PaymentProcessor paymentProcessor = new PaymentProcessor();
+
+// ... to this...
+var users = new ArrayList<String>();
+var paymentProcessor = new PaymentProcessor();
+```
+
+### The danger of "hidden" logic
+
+Using `var` can mask subtle bugs, especially when a method returns complex generics. If you don't explicitly see the type, you might not realise the method is returning a `Map<String, List<String>>` when you expected a simple `Map<String, String>`. You'll probably run up against problems further down the line because debugging is difficult when the type was never explicitly declared.
+
+### So, when is `var` actually useful?
+
+There are only a few scenarios where `var` truly improves the code, such as complex generics (during assignment) or try-with-resources:
+
+```java
+// good examples of var
+var map = new HashMap<String, List<Map<Integer, String>>>();
+var users = new ArrayList<User>();
+
+try (var reader = new BufferedReader(new FileReader("data.txt"))) {
+    System.out.println(reader.readLine());
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+By now, we know that code is read much more often than it is written. While `var` saves you a few keystrokes during development, it can cost you, and moreso your teammates, significant time during maintenance.
+
+Please, use it sparingly, and only when a type is stupidly obvious.

@@ -1,0 +1,72 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-border: hsl(var(--border));
+
+  --font-sans: var(--font-fredoka), system-ui, sans-serif;
+  --font-serif: var(--font-markazi), Georgia, serif;
+  --font-mono: ui-monospace, monospace;
+
+  --radius: 0.35rem;
+}
+
+.image-rendering-pixelated {
+  image-rendering: pixelated;
+}
+
+:root {
+  --background: 38 40% 96%;
+  --foreground: 28 22% 18%;
+  --muted-foreground: 28 12% 50%;
+  --accent: 150 28% 52%;
+  --border: 38 18% 83%;
+}
+
+[data-theme='dark'] {
+  --background: 28 18% 11%;
+  --foreground: 38 22% 86%;
+  --muted-foreground: 38 10% 58%;
+  --accent: 150 22% 46%;
+  --border: 28 12% 24%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: unset;
+  font-weight: unset;
+}
+
+a {
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+a:hover {
+  color: hsl(var(--accent));
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Site name in header: muted colour, no underline (override global link hover) */
+a.header-brand:hover {
+  color: hsl(var(--muted-foreground));
+  text-decoration: none;
+}
+
+/* In-page anchors (e.g. TOC): hover color only, no global underline */
+nav[aria-label="Table of contents"] a:hover {
+  text-decoration: none;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
