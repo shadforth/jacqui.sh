@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import { getAllPosts, formatDate } from '@/lib/posts'
 import { quickLinkClassName } from '@/lib/quick-link'
+import { TrackedLink } from '@/components/TrackedLink'
 
 export const metadata = { title: 'Writing', description: 'Blog posts and travel writing by Jacqui Shadforth.' }
 
@@ -23,9 +23,9 @@ export default function WritingPage() {
       <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
         {posts.map((post) => (
           <li key={post.slug} style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '1rem' }}>
-            <Link href={`/writing/${post.slug}`} className={quickLinkClassName}>
+            <TrackedLink href={`/writing/${post.slug}`} eventName="post_click" eventData={{ slug: post.slug, title: post.title }} className={quickLinkClassName}>
               {post.title}
-            </Link>
+            </TrackedLink>
             <span style={{ color: 'hsl(var(--muted-foreground))', fontSize: '0.875rem', flexShrink: 0 }}>
               {formatDate(post.date)}
             </span>
@@ -45,14 +45,9 @@ export default function WritingPage() {
               rowGap: '0.25rem',
             }}
           >
-            <a
-              href="https://bułka.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={quickLinkClassName}
-            >
+            <TrackedLink href="https://bułka.com" eventName="external_link_click" eventData={{ label: 'bułka.com', location: 'writing' }} external className={quickLinkClassName}>
               bułka.com
-            </a>
+            </TrackedLink>
             <span
               style={{
                 color: 'hsl(var(--muted-foreground))',

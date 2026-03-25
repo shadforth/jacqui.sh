@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { BookOpen, Code2, Menu, Paintbrush, Pencil, X } from 'lucide-react'
+import { track } from '@vercel/analytics'
 
 const navItems = [
   { label: 'writing', href: '/writing', icon: <Pencil className="h-3.5 w-3.5 shrink-0" /> },
@@ -101,7 +102,7 @@ export function Header() {
             {navItems.map(({ label, href, icon }) => {
               const isActive = pathname === href || (href !== '/' && pathname.startsWith(href))
               return (
-                <Link key={href} href={href} className={navLinkClass(isActive)}>
+                <Link key={href} href={href} className={navLinkClass(isActive)} onClick={() => track('nav_click', { page: label })}>
                   {icon}
                   {label}
                 </Link>
@@ -132,7 +133,7 @@ export function Header() {
                 const isActive = pathname === href || (href !== '/' && pathname.startsWith(href))
                 return (
                   <li key={href}>
-                    <Link href={href} className={navLinkClass(isActive)} onClick={() => setMenuOpen(false)}>
+                    <Link href={href} className={navLinkClass(isActive)} onClick={() => { setMenuOpen(false); track('nav_click', { page: label }) }}>
                       {icon}
                       {label}
                     </Link>

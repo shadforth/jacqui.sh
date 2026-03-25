@@ -1,4 +1,5 @@
 import { quickLinkClassName } from '@/lib/quick-link'
+import { TrackedLink } from '@/components/TrackedLink'
 
 export const metadata = { title: 'Building', description: 'Projects and products built by Jacqui Shadforth.' }
 
@@ -45,14 +46,9 @@ export default function BuildingPage() {
               opacity: 0.5,
               top: '0.1em',
             }}>{p.icon}</span>
-            <a
-              href={p.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={quickLinkClassName}
-            >
+            <TrackedLink href={p.url} eventName="external_link_click" eventData={{ label: p.name, location: 'building' }} external className={quickLinkClassName}>
               {p.name}
-            </a>
+            </TrackedLink>
             <p style={{ color: 'hsl(var(--muted-foreground))', fontSize: '0.875rem', marginTop: '0.25rem' }}>
               {p.description}
             </p>

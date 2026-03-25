@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Monitor, Moon, Sun } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
+import { track } from '@vercel/analytics'
 
 type Theme = 'light' | 'dark' | 'auto'
 
@@ -33,6 +34,7 @@ export function ThemeToggle() {
   const apply = useCallback((t: Theme) => {
     setTheme(t)
     setOpen(false)
+    track('theme_changed', { theme: t })
     if (t === 'auto') {
       localStorage.removeItem('theme')
       const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
