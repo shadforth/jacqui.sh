@@ -5,8 +5,9 @@ function getChildText(children: React.ReactNode): string {
   if (typeof children === 'string') return children
   if (typeof children === 'number') return String(children)
   if (Array.isArray(children)) return children.map(getChildText).join('')
-  if (children && typeof children === 'object' && 'props' in (children as object)) {
-    return getChildText((children as React.ReactElement).props.children)
+  if (React.isValidElement(children)) {
+    const nested = (children.props as { children?: React.ReactNode }).children
+    return getChildText(nested ?? '')
   }
   return ''
 }
