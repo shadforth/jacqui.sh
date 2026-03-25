@@ -49,9 +49,10 @@ export function Header() {
         <div className="flex items-center justify-between gap-4">
           <Link
             href="/"
-            className="header-brand text-foreground flex min-w-0 flex-1 flex-col items-start gap-0 leading-none"
+            className="header-brand group rounded-sm text-foreground outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[hsl(var(--foreground))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--background))] flex min-w-0 flex-1 flex-col items-start gap-0 leading-none"
           >
             <span
+              className="transition-colors duration-150 hover:text-[hsl(var(--muted-foreground))]"
               style={{
                 fontFamily: 'var(--font-markazi), serif',
                 fontSize: '1.2rem',
@@ -64,7 +65,7 @@ export function Header() {
               Jacqui Shadforth
             </span>
             <span
-              className="-mt-0.5 transition-[color,opacity] duration-150"
+              className="-mt-0.5"
               style={{
                 textTransform: 'lowercase',
                 fontFamily: 'var(--font-fredoka), sans-serif',
@@ -76,7 +77,23 @@ export function Header() {
                 opacity: 0.85,
               }}
             >
-              Engineer · Designer · Chaotic good
+              <span className="transition-colors duration-150 hover:text-[hsl(var(--muted-foreground))]">
+                Engineer
+              </span>
+              <span aria-hidden className="text-muted-foreground">
+                {' '}
+                ·{' '}
+              </span>
+              <span className="transition-colors duration-150 hover:text-[hsl(var(--muted-foreground))]">
+                Designer
+              </span>
+              <span aria-hidden className="text-muted-foreground">
+                {' '}
+                ·{' '}
+              </span>
+              <span className="transition-colors duration-150 hover:text-orange-500 dark:hover:text-orange-400">
+                Chaotic good
+              </span>
             </span>
           </Link>
 

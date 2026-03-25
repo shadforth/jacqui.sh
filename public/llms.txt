@@ -1,0 +1,21 @@
+# jacqui.sh
+
+> Personal site of Jacqui Shadforth — an Aussie software engineer and designer based in London.
+
+## About
+
+Jacqui Shadforth is a software engineer and designer with a knack for translating complex technical concepts into everyday language. She obsesses over the details and loves building thoughtful products that delight users.
+
+Outside of work, she is into art, languages, AFL, and Formula 1. She has a deep interest in dark history and dystopian fiction.
+
+## Sections
+
+- [Writing](/writing) — Blog posts and travel writing. Topics include software engineering, design, technology, and personal essays.
+- [Reading](/reading) — A curated reading list with ratings and reviews of books Jacqui has read since 2023.
+- [Building](/building) — Projects and products Jacqui has worked on, including bułka.com and donutdriven.dev.
+- [Creating](/creating) — Creative work including pixel art, baking, and painting.
+
+## Contact & Social
+
+- Twitter/X: @jacquishadforth
+- Site: https://jacqui.sh

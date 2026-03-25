@@ -52,9 +52,9 @@ a:hover {
   text-underline-offset: 4px;
 }
 
-/* Site name in header: muted colour, no underline (override global link hover) */
+/* Site name in header: keep foreground colour, no underline (override global link hover) */
 a.header-brand:hover {
-  color: hsl(var(--muted-foreground));
+  color: hsl(var(--foreground));
   text-decoration: none;
 }
 
@@ -69,4 +69,14 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+::selection {
+  background-color: hsl(150 38% 72% / 0.45);
+  color: hsl(var(--foreground));
+}
+
+[data-theme='dark'] ::selection {
+  background-color: hsl(150 28% 36% / 0.55);
+  color: hsl(var(--foreground));
 }

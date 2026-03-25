@@ -90,7 +90,7 @@ export default function CreatingPage() {
       <section>
         <h2 style={h2Style}>Pixel art</h2>
         <p style={{ color: 'hsl(var(--muted-foreground))', lineHeight: 1.7, marginBottom: '1.5rem' }}>
-          A certain 2000s isometric chat room sparked teenage me with an obsession with pixel art that never really faded.
+          A certain 2000s isometric chat room sparked teenage me with a pixel art obsession that never really faded.
         </p>
         <ImageGrid items={pixelArt} pixelated priorityFirst />
       </section>
