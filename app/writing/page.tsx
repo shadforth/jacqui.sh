@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { getAllPosts, formatDate } from '@/lib/posts'
 import { quickLinkClassName } from '@/lib/quick-link'
 
-export const metadata = { title: 'Writing — jacqui.sh' }
+export const metadata = { title: 'Writing', description: 'Blog posts and travel writing by Jacqui Shadforth.' }
 
 const blogHeadingStyle = {
   fontFamily: 'var(--font-markazi), serif',

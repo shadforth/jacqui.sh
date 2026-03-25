@@ -1,7 +1,7 @@
 import { BookTitleWithReview } from '@/components/BookTitleWithReview'
 import { getReadBooks, formatReadDate, stars, LAST_UPDATED, type Book } from '@/lib/books'
 
-export const metadata = { title: 'Reading — jacqui.sh' }
+export const metadata = { title: 'Reading', description: 'Books Jacqui Shadforth has read, with ratings and reviews.' }
 
 const h1Style = {
   fontFamily: 'var(--font-markazi), serif',

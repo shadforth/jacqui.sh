@@ -12,13 +12,55 @@ const markaziText = Markazi_Text({
   weight: ['400', '500', '600', '700'],
 })
 
+const siteUrl = 'https://jacqui.sh'
+const siteDescription = 'Personal site of Jacqui Shadforth — an Aussie software engineer and designer based in London.'
+
 export const metadata: Metadata = {
-  title: 'jacqui.sh',
-  description: 'Personal site of Jacqui Shadforth',
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'jacqui.sh',
+    template: '%s — jacqui.sh',
+  },
+  description: siteDescription,
+  keywords: ['Jacqui Shadforth', 'software engineer', 'designer', 'London', 'personal site', 'blog'],
+  authors: [{ name: 'Jacqui Shadforth', url: siteUrl }],
+  creator: 'Jacqui Shadforth',
+  openGraph: {
+    type: 'website',
+    locale: 'en_GB',
+    url: siteUrl,
+    siteName: 'jacqui.sh',
+    title: 'jacqui.sh',
+    description: siteDescription,
+  },
   twitter: {
     card: 'summary_large_image',
+    site: '@jacquishadforth',
     creator: '@jacquishadforth',
+    title: 'jacqui.sh',
+    description: siteDescription,
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+}
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Jacqui Shadforth',
+  url: siteUrl,
+  sameAs: ['https://twitter.com/jacquishadforth'],
+  jobTitle: 'Software Engineer & Designer',
+  description: 'Aussie software engineer and designer based in London.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -30,6 +72,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="flex-grow">{children}</main>
           <Footer />
         </ThemeProvider>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
       </body>
     </html>
   )

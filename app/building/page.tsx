@@ -1,6 +1,6 @@
 import { quickLinkClassName } from '@/lib/quick-link'
 
-export const metadata = { title: 'Building — jacqui.sh' }
+export const metadata = { title: 'Building', description: 'Projects and products built by Jacqui Shadforth.' }
 
 const projects = [
   {

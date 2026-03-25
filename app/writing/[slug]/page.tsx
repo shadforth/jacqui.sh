@@ -12,7 +12,26 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const post = getPost(slug)
-  return { title: post ? `${post.title} — jacqui.sh` : 'Not found' }
+  if (!post) return { title: 'Not found' }
+
+  return {
+    title: post.title,
+    description: post.description,
+    openGraph: {
+      type: 'article',
+      title: post.title,
+      description: post.description,
+      url: `https://jacqui.sh/writing/${slug}`,
+      publishedTime: post.date,
+      authors: ['Jacqui Shadforth'],
+      tags: post.categories,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.description,
+    },
+  }
 }
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -22,7 +41,23 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
   const headings = extractHeadings(post.content)
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    author: {
+      '@type': 'Person',
+      name: 'Jacqui Shadforth',
+      url: 'https://jacqui.sh',
+    },
+    url: `https://jacqui.sh/writing/${slug}`,
+    keywords: post.categories?.join(', '),
+  }
+
   return (
+    <>
     <div className="container mx-auto px-4 pb-24" style={{ maxWidth: '72rem' }}>
       <div style={{ display: 'flex', gap: '3rem', alignItems: 'flex-start' }}>
 
@@ -75,5 +110,10 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         </article>
       </div>
     </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+    </>
   )
 }

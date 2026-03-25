@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export const metadata = { title: 'Creating — jacqui.sh' }
+export const metadata = { title: 'Creating', description: 'Creative work by Jacqui Shadforth — pixel art, baking, and painting.' }
 
 const pixelArt = [
   { src: '/media/pixel-art/grandma_640.png', alt: 'Grandmother Fa, Mulan' },
