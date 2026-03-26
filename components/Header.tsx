@@ -1,8 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { useState, useEffect } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { BookOpen, Code2, Menu, Paintbrush, Pencil, X } from 'lucide-react'
 import { track } from '@vercel/analytics'
 
@@ -20,7 +20,23 @@ const navLinkClass = (isActive: boolean) =>
 
 export function Header() {
   const pathname = usePathname()
+  const router = useRouter()
   const [menuOpen, setMenuOpen] = useState(false)
+  const [glitching, setGlitching] = useState(false)
+  const glitchTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const handleChaoticGoodClick = useCallback((e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    if (glitching) return
+    setGlitching(true)
+    glitchTimer.current = setTimeout(() => {
+      setGlitching(false)
+      router.push('/')
+    }, 800)
+  }, [glitching, router])
+
+  useEffect(() => () => { if (glitchTimer.current) clearTimeout(glitchTimer.current) }, [])
 
   useEffect(() => {
     setMenuOpen(false)
@@ -45,105 +61,136 @@ export function Header() {
   }, [])
 
   return (
-    <header style={{ borderBottom: '1px solid hsl(var(--border))' }}>
-      <div className="container mx-auto max-w-2xl px-4 py-6">
-        <div className="flex items-center justify-between gap-4">
-          <Link
-            href="/"
-            className="header-brand group rounded-sm text-foreground outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[hsl(var(--foreground))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--background))] flex min-w-0 flex-1 flex-col items-start gap-0 leading-none"
-          >
-            <span
-              className="transition-colors duration-150 group-hover:text-[hsl(var(--muted-foreground))]"
-              style={{
-                fontFamily: 'var(--font-markazi), serif',
-                fontSize: '1.2rem',
-                fontWeight: 700,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                lineHeight: 1.15,
-              }}
+    <>
+      <style>{`
+        @keyframes pokemonGlitch {
+          0%   { transform: none; filter: none; }
+          6%   { transform: skewX(-8deg) translateX(-4px); filter: hue-rotate(90deg) saturate(5) brightness(1.3); }
+          12%  { transform: skewX(6deg) translateX(3px); filter: hue-rotate(270deg) saturate(4) brightness(0.8); opacity: 0.7; }
+          18%  { transform: none; filter: none; opacity: 1; }
+          24%  { transform: translateX(-5px) skewX(-3deg); filter: hue-rotate(180deg) saturate(6) brightness(1.1); }
+          28%  { transform: skewX(4deg) translateX(4px); filter: hue-rotate(45deg) saturate(5); opacity: 0.6; }
+          33%  { transform: none; filter: none; opacity: 1; }
+          40%  { transform: translateX(3px) skewX(-5deg); filter: hue-rotate(320deg) saturate(4) brightness(1.2); }
+          44%  { transform: skewX(3deg); filter: hue-rotate(130deg) saturate(3); opacity: 0.8; }
+          48%  { transform: none; filter: none; opacity: 1; }
+          56%  { transform: translateX(-3px) skewX(2deg); filter: hue-rotate(200deg) saturate(3); }
+          60%  { transform: none; filter: none; }
+          68%  { transform: translateX(2px) skewX(-2deg); filter: hue-rotate(90deg) saturate(2); opacity: 0.9; }
+          72%  { transform: none; filter: none; opacity: 1; }
+          82%  { transform: translateX(-1px); filter: hue-rotate(30deg) saturate(2); }
+          88%  { transform: none; filter: none; }
+          100% { transform: none; filter: none; opacity: 1; }
+        }
+      `}</style>
+      <header style={{ borderBottom: '1px solid hsl(var(--border))' }}>
+        <div className="container mx-auto max-w-2xl px-4 py-6">
+          <div className="flex items-center justify-between gap-4">
+            <Link
+              href="/"
+              className="header-brand group rounded-sm text-foreground outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[hsl(var(--foreground))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--background))] flex min-w-0 flex-1 flex-col items-start gap-0 leading-none"
+              style={glitching ? { animation: 'pokemonGlitch 0.8s linear forwards' } : undefined}
             >
-              Jacqui Shadforth
-            </span>
-            <span
-              className="-mt-0.5"
-              style={{
-                textTransform: 'lowercase',
-                fontFamily: 'var(--font-fredoka), sans-serif',
-                fontSize: '0.8rem',
-                fontWeight: 400,
-                letterSpacing: '0.04em',
-                lineHeight: 1.2,
-                color: 'inherit',
-                opacity: 0.85,
-              }}
-            >
-              <span className="transition-colors duration-150 group-hover:text-[hsl(var(--muted-foreground))]">
-                Engineer
+              <span
+                className="transition-colors duration-150 group-hover:text-[hsl(var(--muted-foreground))]"
+                style={{
+                  fontFamily: 'var(--font-markazi), serif',
+                  fontSize: '1.2rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  lineHeight: 1.15,
+                }}
+              >
+                Jacqui Shadforth
               </span>
-              <span aria-hidden className="text-muted-foreground">
-                {' '}
-                ·{' '}
+              <span
+                className="-mt-0.5"
+                style={{
+                  textTransform: 'lowercase',
+                  fontFamily: 'var(--font-fredoka), sans-serif',
+                  fontSize: '0.8rem',
+                  fontWeight: 400,
+                  letterSpacing: '0.04em',
+                  lineHeight: 1.2,
+                  color: 'inherit',
+                  opacity: 0.85,
+                }}
+              >
+                <span className="transition-colors duration-150 group-hover:text-[hsl(var(--muted-foreground))]">
+                  Engineer
+                </span>
+                <span aria-hidden className="text-muted-foreground">
+                  {' '}
+                  ·{' '}
+                </span>
+                <span className="transition-colors duration-150 group-hover:text-[hsl(var(--muted-foreground))]">
+                  Designer
+                </span>
+                <span aria-hidden className="text-muted-foreground">
+                  {' '}
+                  ·{' '}
+                </span>
+                <span
+                  className="transition-colors duration-150 group-hover:text-[hsl(var(--muted-foreground))] hover:text-orange-500 dark:hover:text-orange-400 cursor-pointer"
+                  onClick={handleChaoticGoodClick}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleChaoticGoodClick(e as unknown as React.MouseEvent) }}
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Chaotic good"
+                >
+                  Chaotic good
+                </span>
               </span>
-              <span className="transition-colors duration-150 group-hover:text-[hsl(var(--muted-foreground))]">
-                Designer
-              </span>
-              <span aria-hidden className="text-muted-foreground">
-                {' '}
-                ·{' '}
-              </span>
-              <span className="transition-colors duration-150 group-hover:text-[hsl(var(--muted-foreground))] hover:text-orange-500 dark:hover:text-orange-400">
-                Chaotic good
-              </span>
-            </span>
-          </Link>
+            </Link>
 
-          <nav className="hidden shrink-0 items-center gap-6 md:flex" aria-label="Main">
-            {navItems.map(({ label, href, icon }) => {
-              const isActive = pathname === href || (href !== '/' && pathname.startsWith(href))
-              return (
-                <Link key={href} href={href} className={navLinkClass(isActive)} onClick={() => track('nav_click', { page: label })}>
-                  {icon}
-                  {label}
-                </Link>
-              )
-            })}
-          </nav>
-
-          <button
-            type="button"
-            className="cursor-pointer rounded p-2 text-muted-foreground transition-colors hover:bg-[hsl(var(--border))] hover:text-foreground md:hidden"
-            aria-expanded={menuOpen}
-            aria-controls="mobile-nav"
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            onClick={() => setMenuOpen((o) => !o)}
-          >
-            {menuOpen ? <X className="h-5 w-5" strokeWidth={2} aria-hidden /> : <Menu className="h-5 w-5" strokeWidth={2} aria-hidden />}
-          </button>
-        </div>
-
-        {menuOpen && (
-          <nav
-            id="mobile-nav"
-            className="-mx-4 mt-6 border-t border-[hsl(var(--border))] px-4 pb-1 pt-5 md:hidden"
-            aria-label="Main"
-          >
-            <ul className="flex flex-col gap-3">
+            <nav className="hidden shrink-0 items-center gap-6 md:flex" aria-label="Main">
               {navItems.map(({ label, href, icon }) => {
                 const isActive = pathname === href || (href !== '/' && pathname.startsWith(href))
                 return (
-                  <li key={href}>
-                    <Link href={href} className={navLinkClass(isActive)} onClick={() => { setMenuOpen(false); track('nav_click', { page: label }) }}>
-                      {icon}
-                      {label}
-                    </Link>
-                  </li>
+                  <Link key={href} href={href} className={navLinkClass(isActive)} onClick={() => track('nav_click', { page: label })}>
+                    {icon}
+                    {label}
+                  </Link>
                 )
               })}
-            </ul>
-          </nav>
-        )}
-      </div>
-    </header>
+            </nav>
+
+            <button
+              type="button"
+              className="cursor-pointer rounded p-2 text-muted-foreground transition-colors hover:bg-[hsl(var(--border))] hover:text-foreground md:hidden"
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav"
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              onClick={() => setMenuOpen((o) => !o)}
+            >
+              {menuOpen ? <X className="h-5 w-5" strokeWidth={2} aria-hidden /> : <Menu className="h-5 w-5" strokeWidth={2} aria-hidden />}
+            </button>
+          </div>
+
+          {menuOpen && (
+            <nav
+              id="mobile-nav"
+              className="-mx-4 mt-6 border-t border-[hsl(var(--border))] px-4 pb-1 pt-5 md:hidden"
+              aria-label="Main"
+            >
+              <ul className="flex flex-col gap-3">
+                {navItems.map(({ label, href, icon }) => {
+                  const isActive = pathname === href || (href !== '/' && pathname.startsWith(href))
+                  return (
+                    <li key={href}>
+                      <Link href={href} className={navLinkClass(isActive)} onClick={() => { setMenuOpen(false); track('nav_click', { page: label }) }}>
+                        {icon}
+                        {label}
+                      </Link>
+                    </li>
+                  )
+                })}
+              </ul>
+            </nav>
+          )}
+        </div>
+      </header>
+    </>
   )
 }
