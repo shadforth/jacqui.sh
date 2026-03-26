@@ -10,7 +10,7 @@ const fredoka = Fredoka({ subsets: ['latin'], variable: '--font-fredoka' })
 const markaziText = Markazi_Text({
   subsets: ['latin'],
   variable: '--font-markazi',
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '500', '700'],
 })
 
 const siteUrl = 'https://jacqui.sh'

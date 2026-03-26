@@ -35,11 +35,11 @@ export default function HomePage() {
             <Link href="/writing" className={quickLinkClassName}>
               Writing
             </Link>
-            <span style={mutedStyle}> occasionally</span>
+            <span style={mutedStyle}> occasionally about software, systems, and other detours</span>
           </li>
           <li>
             <Link href="/building" className={quickLinkClassName}>Building</Link>
-            <span style={mutedStyle}> things with people smarter than me</span>
+            <span style={mutedStyle}> software with people smarter than me</span>
           </li>
           <li>
             <Link href="/reading" className={quickLinkClassName}>Reading</Link>

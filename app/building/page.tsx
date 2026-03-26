@@ -42,10 +42,12 @@ const h1Style = {
 export default function BuildingPage() {
   return (
     <div className="container mx-auto max-w-2xl px-4 py-16 md:py-24">
-      <h1 style={h1Style}>Building</h1>
-      <p style={{ color: 'hsl(var(--muted-foreground))', lineHeight: 1.7, marginBottom: '2.5rem' }}>
-        Last updated: 26 March 2026
-      </p>
+      <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '2.5rem' }}>
+        <h1 style={{ ...h1Style, marginBottom: 0 }}>Building</h1>
+        <span style={{ color: 'hsl(var(--muted-foreground))', fontSize: '0.75rem', opacity: 0.55 }}>
+          <span style={{ fontWeight: 500 }}>Last updated</span>: 26 March 2026
+        </span>
+      </div>
       <ul style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
         {projects.map((p) => (
           <li key={p.name} style={{ position: 'relative' }}>

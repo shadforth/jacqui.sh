@@ -42,11 +42,13 @@ export default function ReadingPage() {
 
   return (
     <div className="container mx-auto max-w-2xl px-4 py-16 md:py-24">
-      <h1 style={h1Style}>Reading</h1>
-      <p style={{ color: 'hsl(var(--muted-foreground))', lineHeight: 1.7, marginBottom: '1rem' }}>
-        Last updated:{' '}
-        {new Date(LAST_UPDATED).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
-      </p>
+      <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '1rem' }}>
+        <h1 style={{ ...h1Style, marginBottom: 0 }}>Reading</h1>
+        <span style={{ color: 'hsl(var(--muted-foreground))', fontSize: '0.75rem', opacity: 0.55 }}>
+          <span style={{ fontWeight: 500 }}>Last updated</span>:{' '}
+          {new Date(LAST_UPDATED).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+        </span>
+      </div>
 
       {grouped.map(([year, books]) => (
         <div key={year}>

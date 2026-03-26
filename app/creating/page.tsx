@@ -31,8 +31,6 @@ const painting = [
   { src: '/media/painting/painting-6.jpeg', alt: 'Painting study' },
 ]
 
-const photography: { src: string; alt: string }[] = []
-
 const h2Style = {
   fontFamily: 'var(--font-markazi), serif',
   fontSize: '1.5rem',

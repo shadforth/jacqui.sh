@@ -62,27 +62,6 @@ export function Header() {
 
   return (
     <>
-      <style>{`
-        @keyframes pokemonGlitch {
-          0%   { transform: none; filter: none; }
-          6%   { transform: skewX(-8deg) translateX(-4px); filter: hue-rotate(90deg) saturate(5) brightness(1.3); }
-          12%  { transform: skewX(6deg) translateX(3px); filter: hue-rotate(270deg) saturate(4) brightness(0.8); opacity: 0.7; }
-          18%  { transform: none; filter: none; opacity: 1; }
-          24%  { transform: translateX(-5px) skewX(-3deg); filter: hue-rotate(180deg) saturate(6) brightness(1.1); }
-          28%  { transform: skewX(4deg) translateX(4px); filter: hue-rotate(45deg) saturate(5); opacity: 0.6; }
-          33%  { transform: none; filter: none; opacity: 1; }
-          40%  { transform: translateX(3px) skewX(-5deg); filter: hue-rotate(320deg) saturate(4) brightness(1.2); }
-          44%  { transform: skewX(3deg); filter: hue-rotate(130deg) saturate(3); opacity: 0.8; }
-          48%  { transform: none; filter: none; opacity: 1; }
-          56%  { transform: translateX(-3px) skewX(2deg); filter: hue-rotate(200deg) saturate(3); }
-          60%  { transform: none; filter: none; }
-          68%  { transform: translateX(2px) skewX(-2deg); filter: hue-rotate(90deg) saturate(2); opacity: 0.9; }
-          72%  { transform: none; filter: none; opacity: 1; }
-          82%  { transform: translateX(-1px); filter: hue-rotate(30deg) saturate(2); }
-          88%  { transform: none; filter: none; }
-          100% { transform: none; filter: none; opacity: 1; }
-        }
-      `}</style>
       <header style={{ borderBottom: '1px solid hsl(var(--border))' }}>
         <div className="container mx-auto max-w-2xl px-4 py-6">
           <div className="flex items-center justify-between gap-4">
