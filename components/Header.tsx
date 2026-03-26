@@ -53,7 +53,7 @@ export function Header() {
             className="header-brand group rounded-sm text-foreground outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[hsl(var(--foreground))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--background))] flex min-w-0 flex-1 flex-col items-start gap-0 leading-none"
           >
             <span
-              className="transition-colors duration-150 hover:text-[hsl(var(--muted-foreground))]"
+              className="transition-colors duration-150 group-hover:text-[hsl(var(--muted-foreground))]"
               style={{
                 fontFamily: 'var(--font-markazi), serif',
                 fontSize: '1.2rem',
@@ -78,21 +78,21 @@ export function Header() {
                 opacity: 0.85,
               }}
             >
-              <span className="transition-colors duration-150 hover:text-[hsl(var(--muted-foreground))]">
+              <span className="transition-colors duration-150 group-hover:text-[hsl(var(--muted-foreground))]">
                 Engineer
               </span>
               <span aria-hidden className="text-muted-foreground">
                 {' '}
                 ·{' '}
               </span>
-              <span className="transition-colors duration-150 hover:text-[hsl(var(--muted-foreground))]">
+              <span className="transition-colors duration-150 group-hover:text-[hsl(var(--muted-foreground))]">
                 Designer
               </span>
               <span aria-hidden className="text-muted-foreground">
                 {' '}
                 ·{' '}
               </span>
-              <span className="transition-colors duration-150 hover:text-orange-500 dark:hover:text-orange-400">
+              <span className="transition-colors duration-150 group-hover:text-[hsl(var(--muted-foreground))] hover:text-orange-500 dark:hover:text-orange-400">
                 Chaotic good
               </span>
             </span>

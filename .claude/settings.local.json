@@ -3,7 +3,8 @@
     "allow": [
       "mcp__Claude_Preview__preview_start",
       "Bash(xargs ls:*)",
-      "Bash(npm i:*)"
+      "Bash(npm i:*)",
+      "Bash(kill 54544)"
     ]
   }
 }
