@@ -19,7 +19,7 @@ const siteDescription = 'Personal site of Jacqui Shadforth — an Aussie softwar
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'jacqui.sh',
+    default: 'Jacqui Shadforth — jacqui.sh',
     template: '%s — jacqui.sh',
   },
   description: siteDescription,

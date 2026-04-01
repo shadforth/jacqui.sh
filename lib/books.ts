@@ -1,4 +1,4 @@
-export const LAST_UPDATED = "2026-03-25";
+export const LAST_UPDATED = "2026-04-01";
 
 export interface Book {
   title: string;
@@ -12,6 +12,13 @@ export interface Book {
 
 export const books: Book[] = [
   // Read — sorted by date_read desc (undated ones at the end)
+  {
+    title: "The Ones Who Walk Away from Omelas",
+    author: "Ursula K. Le Guine",
+    myRating: 5,
+    dateRead: "2026-04-01",
+    shelf: "read",
+  },
   {
     title: "I Who Have Never Known Men",
     author: "Jacqueline Harpman",
