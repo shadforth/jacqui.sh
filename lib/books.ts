@@ -14,7 +14,7 @@ export const books: Book[] = [
   // Read — sorted by date_read desc (undated ones at the end)
   {
     title: "The Ones Who Walk Away from Omelas",
-    author: "Ursula K. Le Guine",
+    author: "Ursula K. Le Guin",
     myRating: 5,
     dateRead: "2026-04-01",
     shelf: "read",
