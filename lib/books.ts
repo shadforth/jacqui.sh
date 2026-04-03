@@ -1,4 +1,4 @@
-export const LAST_UPDATED = "2026-04-01";
+export const LAST_UPDATED = "2026-04-03";
 
 export interface Book {
   title: string;
@@ -69,7 +69,7 @@ I loved its ambiguity—how it absolutely leaves you hanging—left alone to wan
   {
     title: "Outlive: The Science & Art of Longevity",
     author: "Peter Attia",
-    myRating: 5,
+    myRating: 3,
     dateRead: "2025-05-18",
     shelf: "read",
   },
@@ -90,7 +90,7 @@ I loved its ambiguity—how it absolutely leaves you hanging—left alone to wan
   {
     title: "The Anxious Generation",
     author: "Jonathan Haidt",
-    myRating: 3,
+    myRating: 4,
     dateRead: "2025-04-09",
     shelf: "read",
   },
