@@ -16,8 +16,8 @@ const mutedStyle = { color: 'hsl(var(--muted-foreground))' }
 
 export default function HomePage() {
   return (
-    <div className="container mx-auto max-w-2xl px-4 py-16 md:py-24">
-      <section className="mb-10" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2rem' }}>
+    <div className="container mx-auto max-w-2xl px-4 py-16 md:py-16">
+      <section className="mb-6" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2rem' }}>
         <div>
           <h1 style={{ ...h2Style, marginBottom: '0.25rem' }}>
             Hi! I&rsquo;m Jacqui.
@@ -28,8 +28,8 @@ export default function HomePage() {
         </div>
         <HeadshotGreeting />
       </section>
-      <section className="mb-10">
-        <h2 style={h2Style}>Quick Links</h2>
+      <section className="mb-14">
+        <h2 style={h2Style}>Quick links</h2>
         <ul style={{ listStyleType: 'disc', paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
           <li>
             <Link href="/writing" className={quickLinkClassName}>
@@ -61,8 +61,12 @@ export default function HomePage() {
             I obsess over the details, and I love building thoughtful products that delight users.
           </p>
           <p>
-            Outside of work, I&rsquo;m into art, languages, AFL, and F1. I have a
-            concerning obsession with dark history and dystopian fiction.
+            Outside of work, I&rsquo;m into art, languages, AFL, and F1. I have a concerning obsession
+            with dark history and dystopian fiction. My outlook on life is shaped by spiritual and Buddhist values,
+            thanks in large part to my mum&rsquo;s Thai heritage. I strive for humility,
+            curiosity, and seeing the best in others. I don&rsquo;t always get this right—work in progress. (•̀ᴗ•́ )و
+          </p>
+          <p>
             I&rsquo;m glad you&rsquo;re here! Thanks for stopping by.
           </p>
         </div>
