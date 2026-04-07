@@ -15,7 +15,7 @@ export function NutshellNut() {
         position: "relative",
         display: "inline-flex",
         alignItems: "center",
-        cursor: "default",
+        cursor: "pointer",
       }}
       onMouseEnter={() => { setHovered(true); track("nutshell_interacted"); }}
       onMouseLeave={() => setHovered(false)}

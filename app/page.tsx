@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import HeadshotGreeting from '@/components/HeadshotGreeting'
+import { KaomojiWave } from '@/components/KaomojiWave'
 import { NutshellNut } from '@/components/NutshellNut'
 import { quickLinkClassName } from '@/lib/quick-link'
 
@@ -64,7 +65,7 @@ export default function HomePage() {
             Outside of work, I&rsquo;m into art, languages, AFL, and F1. I have a concerning obsession
             with dark history and dystopian fiction. My outlook on life is shaped by spiritual and Buddhist values,
             thanks in large part to my mum&rsquo;s Thai heritage. I strive for humility,
-            curiosity, and seeing the best in others. I don&rsquo;t always get this right—work in progress. (•̀ᴗ•́ )و
+            curiosity, and seeing the best in others. Always a work in progress. <KaomojiWave />
           </p>
           <p>
             I&rsquo;m glad you&rsquo;re here! Thanks for stopping by.
