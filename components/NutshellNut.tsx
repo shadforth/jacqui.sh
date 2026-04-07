@@ -1,5 +1,6 @@
 "use client";
 
+import { track } from "@vercel/analytics";
 import { Nut } from "lucide-react";
 import { useState } from "react";
 
@@ -16,8 +17,9 @@ export function NutshellNut() {
         alignItems: "center",
         cursor: "default",
       }}
-      onMouseEnter={() => setHovered(true)}
+      onMouseEnter={() => { setHovered(true); track("nutshell_interacted"); }}
       onMouseLeave={() => setHovered(false)}
+      onClick={() => track("nutshell_interacted")}
     >
       {hovered && (
         <div
