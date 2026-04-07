@@ -86,8 +86,7 @@ export function ThemeToggle() {
           style={{
             position: 'absolute',
             bottom: '100%',
-            left: '50%',
-            transform: 'translateX(-50%)',
+            left: 0,
             marginBottom: '6px',
             ...bubble,
             padding: '0.35rem 0',
@@ -101,7 +100,7 @@ export function ThemeToggle() {
             style={{
               position: 'absolute',
               top: '100%',
-              left: '50%',
+              left: '0.875rem',
               transform: 'translateX(-50%)',
               width: 0,
               height: 0,
