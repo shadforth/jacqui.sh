@@ -28,7 +28,6 @@ export function KaomojiWave() {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={handleClick}
-        className={`transition-colors ${hovered ? "text-orange-500 dark:text-orange-400" : ""}`}
         style={{ cursor: "pointer", userSelect: "none" }}
       >
         {face}
