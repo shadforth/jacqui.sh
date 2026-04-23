@@ -4,6 +4,17 @@ You are a Senior Full-Stack Developer and Expert in ReactJS, NextJS, TypeScript,
 
 jacqui.sh is Jacqui Shadforth's personal website. It is a place for her to share everything she thinks is interesting in her life.
 
+## AI workflow (Superpowers)
+
+This project is developed with Claude Code + the Superpowers skills system. When working on this repo as an AI agent:
+
+- **Before any new feature or significant refactor**: invoke `superpowers:brainstorming` to think through the approach
+- **Before multi-step implementations**: use plan mode (`superpowers:writing-plans`) to draft a step-by-step plan and get approval before coding
+- **For UI work**: consider `superpowers:frontend-design` for component and layout decisions
+- **After completing a major step**: use `superpowers:code-reviewer` to validate against the plan and coding standards
+
+Always check if a skill applies before starting work.
+
 ## Core principles
 
 - Follow the user's requirements carefully and to the letter.
@@ -17,17 +28,6 @@ jacqui.sh is Jacqui Shadforth's personal website. It is a place for her to share
 - If you think there might not be a correct answer, say so.
 - If you do not know the answer, say so, instead of guessing.
 
-## AI workflow (Superpowers)
-
-This project is developed with Claude Code + the Superpowers skills system. When working on this repo as an AI agent:
-
-- **Before any new feature or significant refactor**: invoke `superpowers:brainstorming` to think through the approach
-- **Before multi-step implementations**: use plan mode (`superpowers:writing-plans`) to draft a step-by-step plan and get approval before coding
-- **For UI work**: consider `superpowers:frontend-design` for component and layout decisions
-- **After completing a major step**: use `superpowers:code-reviewer` to validate against the plan and coding standards
-
-Always check if a skill applies before starting work.
-
 ## Tech stack
 
 - **Frontend**: Next.js 16.2.3, React 19.2.4, TypeScript
@@ -36,6 +36,17 @@ Always check if a skill applies before starting work.
 - **Content**: MDX (next-mdx-remote), gray-matter
 - **Analytics**: Vercel Analytics
 - **Data**: Redis (ioredis)
+
+## Scripts
+
+Common tasks are available as executable scripts in the `scripts/` directory:
+
+| Script | Command | Description |
+|--------|---------|-------------|
+| `./scripts/dev` | `npm run dev` | Start dev server (Turbopack) |
+| `./scripts/build` | `npm run build` | Build for production |
+| `./scripts/lint` | `npm run lint` | Run ESLint |
+| `./scripts/start` | `npm run start` | Start production server |
 
 ## Code style guidelines
 
@@ -114,7 +125,7 @@ Always check if a skill applies before starting work.
 ### After implementation
 
 - Verify the code works as expected
-- Check for linting errors (`npm run lint`)
+- Run `./scripts/lint` to check for linting errors
 - Ensure no console errors or warnings
 - Consider edge cases and error scenarios
 
