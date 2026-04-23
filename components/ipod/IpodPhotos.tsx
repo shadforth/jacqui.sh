@@ -14,7 +14,7 @@ export const IpodPhotos = ({ photos, photoIndex }: IpodPhotosProps) => {
           className={`ipod-photo-slide ${idx === photoIndex ? 'ipod-photo-active' : ''}`}
         >
           <Image
-            src={`/media/ipod-photos/${photo}`}
+            src={`/media/ipod/photos/${photo}`}
             alt={`Photo ${idx + 1}`}
             fill
             style={{ objectFit: 'cover' }}

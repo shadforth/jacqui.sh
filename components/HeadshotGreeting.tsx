@@ -75,7 +75,7 @@ export default function HeadshotGreeting() {
 
         {/* Headshot */}
         <Image
-          src="/media/jacqui-shadforth-headshot.jpeg"
+          src="/media/profile/headshot.jpeg"
           alt="Jacqui Shadforth"
           width={120}
           height={120}

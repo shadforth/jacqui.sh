@@ -12,7 +12,7 @@ export function NamePronunciation() {
     if (playing) return
 
     if (!audioRef.current) {
-      audioRef.current = new Audio("/media/audio/jacqui-audio-recording.m4a")
+      audioRef.current = new Audio("/media/profile/name-pronunciation.m4a")
       audioRef.current.onended = () => setPlaying(false)
     }
 

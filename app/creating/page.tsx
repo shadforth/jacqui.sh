@@ -3,32 +3,32 @@ import Image from 'next/image'
 export const metadata = { title: 'Creating', description: 'Creative work by Jacqui Shadforth — pixel art, baking, and painting.' }
 
 const pixelArt = [
-  { src: '/media/pixel-art/grandma_640.png', alt: 'Grandmother Fa, Mulan' },
-  { src: '/media/pixel-art/jigglypuff_640.png', alt: 'Jigglypuff' },
-  { src: '/media/pixel-art/oh-the-ironing_640.png', alt: 'Oh, the ironing' },
-  { src: '/media/pixel-art/phoenix-arizona_640.png', alt: 'Phoenix, Arizona' },
-  { src: '/media/pixel-art/red-house_640.png', alt: 'Somewhere in Scandinavia' },
-  { src: '/media/pixel-art/sky-hotel_640.png', alt: 'Sky hotel' },
-  { src: '/media/pixel-art/spyro_640.png', alt: 'Spyro' },
-  { src: '/media/pixel-art/witch_640.png', alt: 'Witch, please' },
-  { src: '/media/pixel-art/pigeon_768.gif', alt: 'Pidgi' },
+  { src: '/media/creating/pixel-art/grandma.png', alt: 'Grandmother Fa, Mulan' },
+  { src: '/media/creating/pixel-art/jigglypuff.png', alt: 'Jigglypuff' },
+  { src: '/media/creating/pixel-art/oh-the-ironing.png', alt: 'Oh, the ironing' },
+  { src: '/media/creating/pixel-art/phoenix-arizona.png', alt: 'Phoenix, Arizona' },
+  { src: '/media/creating/pixel-art/red-house.png', alt: 'Somewhere in Scandinavia' },
+  { src: '/media/creating/pixel-art/sky-hotel.png', alt: 'Sky hotel' },
+  { src: '/media/creating/pixel-art/spyro.png', alt: 'Spyro' },
+  { src: '/media/creating/pixel-art/witch.png', alt: 'Witch, please' },
+  { src: '/media/creating/pixel-art/pigeon.gif', alt: 'Pidgi' },
 ]
 
 const baking = [
-  { src: '/media/baking/bagels.jpeg', alt: 'Bagels' },
-  { src: '/media/baking/english_muffins.jpeg', alt: 'English muffins' },
-  { src: '/media/baking/macarons.JPG', alt: 'Macarons' },
-  { src: '/media/baking/sourdough.jpeg', alt: 'Sourdough' },
-  { src: '/media/baking/soux.jpeg', alt: 'Choux' },
+  { src: '/media/creating/baking/bagels.jpeg', alt: 'Bagels' },
+  { src: '/media/creating/baking/english-muffins.jpeg', alt: 'English muffins' },
+  { src: '/media/creating/baking/macarons.jpeg', alt: 'Macarons' },
+  { src: '/media/creating/baking/sourdough.jpeg', alt: 'Sourdough' },
+  { src: '/media/creating/baking/choux.jpeg', alt: 'Choux' },
 ]
 
 const painting = [
-  { src: '/media/painting/painting-1.jpeg', alt: 'Painting study' },
-  { src: '/media/painting/painting-2.jpeg', alt: 'Painting study' },
-  { src: '/media/painting/painting-3.jpeg', alt: 'Painting study' },
-  { src: '/media/painting/painting-4.jpeg', alt: 'Painting study' },
-  { src: '/media/painting/painting-5.jpeg', alt: 'Painting study' },
-  { src: '/media/painting/painting-6.jpeg', alt: 'Painting study' },
+  { src: '/media/creating/painting/01.jpeg', alt: 'Painting study' },
+  { src: '/media/creating/painting/02.jpeg', alt: 'Painting study' },
+  { src: '/media/creating/painting/03.jpeg', alt: 'Painting study' },
+  { src: '/media/creating/painting/04.jpeg', alt: 'Painting study' },
+  { src: '/media/creating/painting/05.jpeg', alt: 'Painting study' },
+  { src: '/media/creating/painting/06.jpeg', alt: 'Painting study' },
 ]
 
 const h2Style = {
