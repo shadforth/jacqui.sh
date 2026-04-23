@@ -1,0 +1,63 @@
+---
+title: "Lessons from learning a programming language on the job"
+date: "2021-09-18"
+categories: ["career", "learning", "programming languages", "software engineering"]
+description: "Three hard-won lessons from picking up a new programming language on the job — from knowledge transfer pitfalls to learning idioms."
+emojis: ["💡", "🧠", "💻", "❤️", "👏"]
+---
+
+A trend I've noticed in more technology companies today is that hiring for software development roles is becoming a language-agnostic process.
+
+In technical interviews, many companies are now asking candidates to present solutions in the programming language they are most comfortable with, which could be totally different to the language used on the job.
+
+I attribute this shift to organisations recognising that the pool is getting considerably smaller when they will only accept Python or Scala developers, for example. This old model doesn't scale well – especially given the increase in demand for software engineers since COVID-19 and the [unprecedented push towards enterprise cloud adoption](https://www.infoworld.com/article/3602978/the-pandemic-ushers-in-the-next-era-of-enterprise-cloud-adoption.html).
+
+Personally, I welcome this change as it opens a lot of doors that were once closed. This is especially for true for junior developers who are probably not experts in any one language and who are open to exploring new languages.
+
+In this post, I want to share my experience of joining a company with no prior knowledge of the organisation's primary language. I made a lot of mistakes during this journey. I hope that the three lessons I outline below can help anyone who may have reservations about transitioning to a new role or new language.
+
+## Lesson 1: Knowledge of one language doesn't always transfer well to another
+
+By the time I graduated in 2018, I'd heard more than once that knowing one programming language makes it easy to pick up another. In fact, I thought it was silly that some of my friends were taking uni classes dedicated to learning Ruby after we had already spent a year covering Java. "How different could it be?", I thought.
+
+Whilst problem solving, algorithmic thinking, and understanding object-oriented principles are all transferable skills, this won't always be the case for the syntax, semantics, and idioms between languages (more on this later). This might be obvious to the bilingual developers out there, but I learnt this step the hard way.
+
+I came from the Wild West of programming languages – known more commonly as JavaScript – into a new role that required me to pretty quickly pick up C#. I won't lie: it was difficult making the shift from a weakly typed, dynamic, and functional language to a strongly- and statically-typed language with heavy emphasis on OOP.
+
+It took about six months before I felt comfortable working in C# and the .NET ecosystem, where concepts like dependency injection, the composition root, Inversion of Control were all fundamental—and very foreign to me.
+
+My advice: Be careful of falling into the trap of believing that knowing one language will make it easier to learn another. Don't underestimate how much there is to learn; prepare to be stretched and prepare for the frustrations that come with trying to apply prior knowledge to something new. It doesn't always work.
+
+Sometimes, it's our knowledge of a prior language can actually make it harder to learn a new one. It takes some courage to *un*learn what we already know.
+
+## Lesson 2: Dedicate time to learn, outside of work
+
+The second lesson I learnt is to make time to learn a new language *outside* of normal work tasks. This advice was given to me by a principal engineer with over a decade of experience, who once said to me:
+
+> Most of what I know about the language, I learnt in my own time.
+
+And let me be clear: I don't mean that you need to spend a chunk of your free time outside of work hours to "catch up" – this kind of behaviour can quickly become unhealthy and is prone to causing burnout. What I mean is, there needs to be dedicated learning time during your working week that isn't related to a particular ticket. Make it guided with a book, course, or video tutorial. I highly recommend recorded conference talks which dive into a particular part of the language – there are some amazing ones available on YouTube. Content like this is super important for understanding and connecting with the community around the language.
+
+The reality is that there won't always be work tasks available that directly align with your language learning goals. This can depend a lot on the project you're working on and where it is in the software development lifecycle. I joined a team that was in the final stretch of a two-year long project. This meant that in our day-to-day work, there wasn't going to be an opportunity to write a new C# project from scratch – most tasks were tying up loose ends and refactoring existing code. Of course, a lot can be learnt from these tasks, but it's exercising a different muscle.
+
+In the book *Apprenticeship Patterns* by Adewale Oshineye and Dave Hoover, the authors introduce a pattern they call [Breakable Toys](https://learning.oreilly.com/library/view/apprenticeship-patterns/9780596806842/ch05s03.html). The pattern outlines that we gain more experience from failure rather than success, and that our work environment doesn't always allow for failure. Because of this, Breakable Toys is about encouraging software practitioners to work on personal projects in order to learn.
+
+My personal recommendation is to start by building small tools that are genuinely useful in your everyday work. To start learning Golang, I wrote a simple web scraper that scrapes a WordPress website for pastry recipes 🥐. I learnt a lot about the Go ecosystem, how to set up a project from scratch, and covered several surrounding libraries that I wouldn't otherwise have touched if only relying on cards in our backlog.
+
+In summary, by dedicating time outside of work tasks to learn your new language, you create a safe space for yourself to fail, learn, and grow.
+
+## Lesson 3: Learn your language's idioms
+
+The final lesson I want to share is to learn your language's [programming idioms](https://en.wikipedia.org/wiki/Programming_idiom). Idioms often reveal underlying concepts or implementation details about the language. For example, how to loop through a collection, reverse a string, or how to write an anonymous function are pretty different across languages. It's important to learn the typical implementation in order to write readable and extensible code. What's done one way in one language might not be appropriate in another.
+
+Similarly, every programming language comes with a unique history of how and *why* it was created. As an example, the lead language designer of Kotlin, Andrey Breslav, explains that JetBrains' motivations for creating Kotlin was to address a real need they saw in the Java development experience. The language [took inspiration from Java, Scala, C# and Groovy](https://kotlinlang.org/spec/introduction.html#introduction). This can explain Kotlin's syntactic succinctness and its approach to null safety.
+
+On the job, we often don't have the luxury of time to deep-dive into these details; we learn only as much as we need to in order to complete the task. But if you're in a similar position to me and you're learning a new language on the job, I encourage you to go a step further. Seek out why the language you're learning was created, who created it, how it has changed over time, what needs it addresses, and how to write it in an idiomatic way. By doing so, you will not only accelerate your learning, but also have more fun and gain more confidence, too.
+
+## In summary
+
+In short, this experience has made me appreciate that learning a new programming language on the job isn't easy, but there are ways to make the process easier.
+
+First, by understanding that knowledge-transfer doesn't always work between languages, we can purposefully dedicate more time to our new language. This might involve a programming paradigm shift which requires a totally new way of thinking. Second, by spending time on personal projects and creating a safe space to fail, this enables us to learn what we might not be able to from our day-to-day tasks at work. And, finally, seeking to understand a language's idioms and history will give us a deeper understanding and appreciation of the language and what problems it solves.
+
+For those who are stepping into a role with a new programming language: enjoy the learning journey. It's a challenging and rewarding experience. And don't forget to share what you learn, too. :)

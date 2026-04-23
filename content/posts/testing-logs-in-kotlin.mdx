@@ -1,0 +1,153 @@
+---
+title: "Unit testing logs in Kotlin"
+date: "2022-01-28"
+categories: ["kotlin", "unit tests"]
+description: "A practical guide to unit testing application logs in Kotlin using SLF4J, Logback, and JUnit 5."
+emojis: ["🧪", "💻", "✨", "❤️", "👏"]
+---
+
+Sometimes it's worthwhile to unit test an application's logs. This might be important to ensure the correct information[^1] is logged at the correct level during success or failure paths in an application flow. In this post, I share code snippets on how to get started with unit testing logs in Kotlin. For this example I'm using Gradle, SLF4J, and Logback.
+
+## Application code: Robot.kt
+
+Below is a simple `Robot` class with a function that generates a single log. The unit test we'll write will ensure the `turnLeft()` function logs the correct message and logging level.
+
+```kotlin
+package com.logging.example
+
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+
+class Robot {
+    private val logger: Logger =
+        LoggerFactory.getLogger(Robot::class.java)
+
+    fun turnLeft() {
+        logger.info("Turning left!")
+    }
+}
+```
+
+## Dependencies
+
+Below are the required dependencies for this application using Gradle.
+
+```kotlin
+dependencies {
+    implementation("org.jetbrains.kotlin:kotlin-stdlib")
+    implementation("org.slf4j:slf4j-api:1.7.31")
+    implementation("ch.qos.logback:logback-classic:1.2.3")
+    implementation("ch.qos.logback:logback-core:1.2.3")
+    implementation("org.junit.jupiter:junit-jupiter:5.4.2")
+}
+```
+
+## A complete example: RobotTest.kt
+
+Here is the required setup for a single test that verifies the log message and level. Below, we'll dive into more detail about what's going on here.
+
+```kotlin
+package com.logging.example
+
+import ch.qos.logback.classic.Level
+import ch.qos.logback.classic.Logger
+import ch.qos.logback.classic.spi.ILoggingEvent
+import ch.qos.logback.core.read.ListAppender
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.slf4j.LoggerFactory
+
+import org.junit.jupiter.api.Assertions.assertEquals
+
+class RobotTest {
+
+    private val underTest = Robot()
+
+    private val logger: Logger =
+        LoggerFactory.getLogger(Robot::class.java) as Logger
+
+    private val appender: ListAppender<ILoggingEvent> = ListAppender()
+
+    @BeforeEach
+    fun setUp() {
+        appender.start()
+        logger.addAppender(appender)
+    }
+
+    @AfterEach
+    fun tearDown() {
+        logger.detachAppender(appender)
+    }
+
+    @Test
+    fun `should log info when robot turns left`() {
+        underTest.turnLeft()
+
+        val appenderList = appender.list
+        assertEquals(
+           "Turning left!",
+           appenderList.first().message
+        )
+        assertEquals(
+           Level.INFO,
+           appenderList.first().level
+        )
+    }
+}
+```
+
+## How does it work?
+
+Let's walk through the `RobotTest.kt` code above.
+
+The first thing we need to do is cast the existing logger from `SLF4J` to `Logback`. This is important because Logback allows us to create an appender, which is what we'll use for collecting logging events.
+
+By creating our own appender, we can access all the logging events that occur during the lifetime of our application. To do this, we initialise a new `ListAppender()` that accepts objects of type `ILoggingEvent`.
+
+```kotlin
+private val logger: Logger =
+    LoggerFactory.getLogger(Robot::class.java) as Logger
+
+private val appender: ListAppender<ILoggingEvent> = ListAppender()
+```
+
+Next, we register the appender with the logger in our `setUp()` function. We also ensure the appender is properly detached in our `tearDown()` function.
+
+```kotlin
+@BeforeEach
+fun setUp() {
+    appender.start()
+    logger.addAppender(appender)
+}
+
+@AfterEach
+fun tearDown() {
+    logger.detachAppender(appender)
+}
+```
+
+Now, we can finally get to our test! 👏
+
+After calling the method that performs the logging, we can assert on any logging events as they were captured by the appender. In this example, you'll see that I can simply refer to the `first()` message in the appender list to access the first (and only) log.
+
+```kotlin
+@Test
+fun `should log info when robot turns left`() {
+    underTest.turnLeft()
+
+    val appenderList = appender.list
+    assertEquals(
+       "Turning left!",
+       appenderList.first().message
+    )
+    assertEquals(
+       Level.INFO,
+       appenderList.first().level
+    )
+}
+```
+
+And we're done! Our test should pass smoothly and we can go on with our lives in peace knowing our logs are logging exactly what we expect of them.
+
+[^1]: A caveat — of course, checking for an exact string in a log can quickly turn into brittle tests. In a real-world example, I had a legitimate use case for wanting to know the exact numbers generated in from logs. Like any test, it's important to be thoughtful about *what* exactly you're trying to safeguard against. Testing logs is no different.
