@@ -19,7 +19,8 @@ const markaziText = Markazi_Text({
 })
 
 const siteUrl = 'https://jacqui.sh'
-const siteDescription = 'Personal site of Jacqui Shadforth — an Aussie software engineer and designer based in London.'
+const siteDescription =
+  'Personal site of Jacqui Shadforth — an Aussie software engineer and designer based in London.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -28,7 +29,14 @@ export const metadata: Metadata = {
     template: '%s — jacqui.sh',
   },
   description: siteDescription,
-  keywords: ['Jacqui Shadforth', 'software engineer', 'designer', 'London', 'personal site', 'blog'],
+  keywords: [
+    'Jacqui Shadforth',
+    'software engineer',
+    'designer',
+    'London',
+    'personal site',
+    'blog',
+  ],
   authors: [{ name: 'Jacqui Shadforth', url: siteUrl }],
   creator: 'Jacqui Shadforth',
   openGraph: {
@@ -78,7 +86,11 @@ export const viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${fredoka.variable} ${markaziText.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${fredoka.variable} ${markaziText.variable}`}
+    >
       <head>
         <link rel="dns-prefetch" href="https://ws.audioscrobbler.com" />
         <link rel="preconnect" href="https://ws.audioscrobbler.com" />

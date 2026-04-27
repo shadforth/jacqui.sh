@@ -1,4 +1,4 @@
-import { VolumeX, Volume2 } from "lucide-react"
+import { VolumeX, Volume2 } from 'lucide-react'
 
 interface IpodVideosProps {
   isVideoMuted: boolean
@@ -25,7 +25,11 @@ export const IpodVideos = ({ isVideoMuted, toggleMute }: IpodVideosProps) => {
         className="ipod-mute-switch"
         title={isVideoMuted ? 'Unmute video' : 'Mute video'}
       >
-        {isVideoMuted ? <VolumeX size={12} strokeWidth={2.5} /> : <Volume2 size={12} strokeWidth={2.5} />}
+        {isVideoMuted ? (
+          <VolumeX size={12} strokeWidth={2.5} />
+        ) : (
+          <Volume2 size={12} strokeWidth={2.5} />
+        )}
       </button>
     </div>
   )

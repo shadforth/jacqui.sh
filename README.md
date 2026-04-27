@@ -22,19 +22,19 @@ npm install
 
 Create a `.env.local` file with the following variables:
 
-| Variable | Description |
-|----------|-------------|
-| `REDIS_URL` | Redis connection URL (used for emoji reactions on blog posts) |
-| `LASTFM_API_KEY` | Last.fm API key (used for the listening section) |
+| Variable         | Description                                                   |
+| ---------------- | ------------------------------------------------------------- |
+| `REDIS_URL`      | Redis connection URL (used for emoji reactions on blog posts) |
+| `LASTFM_API_KEY` | Last.fm API key (used for the listening section)              |
 
 Then use the scripts in the `scripts/` directory:
 
-| Script | Description |
-|--------|-------------|
-| `./scripts/dev` | Start the dev server (Turbopack) |
-| `./scripts/build` | Build for production |
-| `./scripts/lint` | Run ESLint |
-| `./scripts/start` | Start the production server |
+| Script            | Description                      |
+| ----------------- | -------------------------------- |
+| `./scripts/dev`   | Start the dev server (Turbopack) |
+| `./scripts/build` | Build for production             |
+| `./scripts/lint`  | Run ESLint                       |
+| `./scripts/start` | Start the production server      |
 
 Open [http://localhost:3000](http://localhost:3000).
 

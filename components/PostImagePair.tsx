@@ -1,5 +1,5 @@
-import Image from "next/image"
-import { getBlurDataURL } from "@/lib/blur"
+import Image from 'next/image'
+import { getBlurDataURL } from '@/lib/blur'
 
 interface PostImagePairProps {
   src1: string
@@ -13,16 +13,16 @@ interface PostImagePairProps {
 
 export const PostImagePair = async ({
   src1,
-  alt1 = "",
+  alt1 = '',
   src2,
-  alt2 = "",
+  alt2 = '',
   caption,
   priority = false,
   priority2 = false,
 }: PostImagePairProps) => {
   const [blur1, blur2] = await Promise.all([getBlurDataURL(src1), getBlurDataURL(src2)])
-  const blurProps1 = blur1 ? { placeholder: "blur" as const, blurDataURL: blur1 } : {}
-  const blurProps2 = blur2 ? { placeholder: "blur" as const, blurDataURL: blur2 } : {}
+  const blurProps1 = blur1 ? { placeholder: 'blur' as const, blurDataURL: blur1 } : {}
+  const blurProps2 = blur2 ? { placeholder: 'blur' as const, blurDataURL: blur2 } : {}
 
   return (
     <figure className="not-prose my-4">
@@ -53,7 +53,7 @@ export const PostImagePair = async ({
       {caption && (
         <figcaption
           className="mt-2 text-center text-sm"
-          style={{ color: "hsl(var(--muted-foreground))" }}
+          style={{ color: 'hsl(var(--muted-foreground))' }}
         >
           {caption}
         </figcaption>

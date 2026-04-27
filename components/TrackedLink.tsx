@@ -12,12 +12,25 @@ interface TrackedLinkProps {
   children: React.ReactNode
 }
 
-export function TrackedLink({ href, eventName, eventData, external, className, children }: TrackedLinkProps) {
+export function TrackedLink({
+  href,
+  eventName,
+  eventData,
+  external,
+  className,
+  children,
+}: TrackedLinkProps) {
   const handleClick = () => track(eventName, eventData)
 
   if (external) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={className} onClick={handleClick}>
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={className}
+        onClick={handleClick}
+      >
         {children}
       </a>
     )

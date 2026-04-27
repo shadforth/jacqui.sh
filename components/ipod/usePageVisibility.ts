@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 
 export const usePageVisibility = () => {
   const [isTabVisible, setIsTabVisible] = useState(() => {
@@ -28,7 +28,7 @@ export const usePageVisibility = () => {
 
     // Listen for tab visibility changes (switching tabs)
     document.addEventListener('visibilitychange', handleVisibilityChange)
-    
+
     // Listen for window focus changes (switching apps)
     window.addEventListener('focus', handleFocus)
     window.addEventListener('blur', handleBlur)

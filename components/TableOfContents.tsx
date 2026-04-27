@@ -7,11 +7,15 @@ export function TableOfContents({ headings }: { headings: Heading[] }) {
   if (items.length === 0) return null
 
   return (
-    <nav
-      aria-label="Table of contents"
-      style={{ paddingRight: '1.5rem' }}
-    >
-      <p style={{ fontSize: '1.1rem', fontFamily: 'var(--font-markazi), serif', color: 'hsl(var(--foreground))', marginBottom: '0.25rem' }}>
+    <nav aria-label="Table of contents" style={{ paddingRight: '1.5rem' }}>
+      <p
+        style={{
+          fontSize: '1.1rem',
+          fontFamily: 'var(--font-markazi), serif',
+          color: 'hsl(var(--foreground))',
+          marginBottom: '0.25rem',
+        }}
+      >
         On this page
       </p>
       <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>

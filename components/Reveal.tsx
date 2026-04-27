@@ -25,7 +25,9 @@ export const Reveal = ({ children, label = 'Reveal answer', prefix }: RevealProp
         tabIndex={revealed ? undefined : 0}
         aria-label={revealed ? undefined : label}
         onClick={revealed ? undefined : handleReveal}
-        onKeyDown={revealed ? undefined : (e) => (e.key === 'Enter' || e.key === ' ') && handleReveal()}
+        onKeyDown={
+          revealed ? undefined : (e) => (e.key === 'Enter' || e.key === ' ') && handleReveal()
+        }
         style={{
           color: revealed ? 'hsl(var(--muted-foreground))' : 'transparent',
           background: revealed ? 'transparent' : 'hsl(var(--foreground))',

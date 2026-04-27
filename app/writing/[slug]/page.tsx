@@ -1,5 +1,7 @@
 import { notFound } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc'
+import rehypePrettyCode from 'rehype-pretty-code'
+import type { Plugin } from 'unified'
 import { getAllPosts, getPost, formatDate, extractHeadings } from '@/lib/posts'
 import { TableOfContents } from '@/components/TableOfContents'
 import { mdxComponents } from '@/components/MdxComponents'
@@ -65,64 +67,136 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
   return (
     <>
-    <PostReactionsProvider slug={slug} emojis={post.emojis}>
-    <div className="container mx-auto px-4" style={{ maxWidth: '72rem' }}>
-      <div style={{ display: 'flex', gap: '3rem', alignItems: 'stretch', minHeight: 'calc(100vh - 5.25rem)' }}>
-
-        {/* Sidebar — date + tags + optional TOC */}
-        <aside
-          style={{ width: '13rem', flexShrink: 0, paddingTop: '3rem', borderRight: '1px solid hsl(var(--border))', paddingRight: '1.5rem' }}
-          className="hidden lg:block"
-        >
-          {/* Date + Tags — not sticky, scroll away naturally */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '1.5rem' }}>
-            <div>
-              <p style={{ fontSize: '1.1rem', fontFamily: 'var(--font-markazi), serif', color: 'hsl(var(--foreground))', marginBottom: '-.25rem' }}>Date</p>
-              <time style={{ fontSize: '0.8rem', color: 'hsl(var(--muted-foreground))' }}>
-                {formatDate(post.date, true)}
-              </time>
-            </div>
-            {post.categories && post.categories.length > 0 && (
-              <div>
-                <p style={{ fontSize: '1.1rem', fontFamily: 'var(--font-markazi), serif', color: 'hsl(var(--foreground))', marginBottom: '0.25rem' }}>Tags</p>
-                <div style={{ display: 'flex', gap: '0.3rem', flexWrap: 'wrap' }}>
-                  {post.categories.map((category) => (
-                    <a key={category} href={`/writing?tags=${encodeURIComponent(category)}`} className="post-tag">
-                      {category}
-                    </a>
-                  ))}
+      <PostReactionsProvider slug={slug} emojis={post.emojis}>
+        <div className="container mx-auto px-4" style={{ maxWidth: '72rem' }}>
+          <div
+            style={{
+              display: 'flex',
+              gap: '3rem',
+              alignItems: 'stretch',
+              minHeight: 'calc(100vh - 5.25rem)',
+            }}
+          >
+            {/* Sidebar — date + tags + optional TOC */}
+            <aside
+              style={{
+                width: '13rem',
+                flexShrink: 0,
+                paddingTop: '3rem',
+                borderRight: '1px solid hsl(var(--border))',
+                paddingRight: '1.5rem',
+              }}
+              className="hidden lg:block"
+            >
+              {/* Date + Tags — not sticky, scroll away naturally */}
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '1rem',
+                  marginBottom: '1.5rem',
+                }}
+              >
+                <div>
+                  <p
+                    style={{
+                      fontSize: '1.1rem',
+                      fontFamily: 'var(--font-markazi), serif',
+                      color: 'hsl(var(--foreground))',
+                      marginBottom: '-.25rem',
+                    }}
+                  >
+                    Date
+                  </p>
+                  <time style={{ fontSize: '0.8rem', color: 'hsl(var(--muted-foreground))' }}>
+                    {formatDate(post.date, true)}
+                  </time>
                 </div>
+                {post.categories && post.categories.length > 0 && (
+                  <div>
+                    <p
+                      style={{
+                        fontSize: '1.1rem',
+                        fontFamily: 'var(--font-markazi), serif',
+                        color: 'hsl(var(--foreground))',
+                        marginBottom: '0.25rem',
+                      }}
+                    >
+                      Tags
+                    </p>
+                    <div style={{ display: 'flex', gap: '0.3rem', flexWrap: 'wrap' }}>
+                      {post.categories.map((category) => (
+                        <a
+                          key={category}
+                          href={`/writing?tags=${encodeURIComponent(category)}`}
+                          className="post-tag"
+                        >
+                          {category}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
 
-          {/* TOC — only when headings exist */}
-          {headings.length > 1 && (
-            <div style={{ position: 'sticky', top: '5rem', maxHeight: 'calc(100vh - 6rem)', overflowY: 'auto' }}>
-              <TableOfContents headings={headings} />
-            </div>
-          )}
-        </aside>
+              {/* TOC — only when headings exist */}
+              {headings.length > 1 && (
+                <div
+                  style={{
+                    position: 'sticky',
+                    top: '5rem',
+                    maxHeight: 'calc(100vh - 6rem)',
+                    overflowY: 'auto',
+                  }}
+                >
+                  <TableOfContents headings={headings} />
+                </div>
+              )}
+            </aside>
 
-        {/* Post content */}
-        <article className="min-w-0 max-w-[42rem] flex-1 pt-12 pb-24 mx-auto lg:mx-0">
-<div style={{ marginBottom: '0.25rem' }}>
-            <h1 style={{ fontFamily: 'var(--font-markazi), serif', fontSize: '2rem', lineHeight: 1.2 }}>
-              {post.title}
-            </h1>
+            {/* Post content */}
+            <article className="min-w-0 max-w-[42rem] flex-1 pt-12 pb-24 mx-auto lg:mx-0">
+              <div style={{ marginBottom: '0.25rem' }}>
+                <h1
+                  style={{
+                    fontFamily: 'var(--font-markazi), serif',
+                    fontSize: '2rem',
+                    lineHeight: 1.2,
+                  }}
+                >
+                  {post.title}
+                </h1>
+              </div>
+              <PostReactions />
+              <div className="prose prose-base max-w-none">
+                <MDXRemote
+                  source={post.content}
+                  components={mdxComponents}
+                  options={{
+                    mdxOptions: {
+                      rehypePlugins: [
+                        [rehypePrettyCode as unknown as Plugin, { theme: 'catppuccin-mocha' }],
+                      ],
+                    },
+                  }}
+                />
+              </div>
+              <div
+                style={{
+                  textAlign: 'center',
+                  color: 'hsl(var(--muted-foreground) / 0.6)',
+                  margin: '0.75rem 0 0.5rem',
+                  letterSpacing: '0.2em',
+                  fontSize: '0.8rem',
+                }}
+              >
+                ~*~
+              </div>
+              <PostReactions />
+            </article>
           </div>
-          <PostReactions />
-          <div className="prose prose-base max-w-none">
-            <MDXRemote source={post.content} components={mdxComponents} />
-          </div>
-          <div style={{ textAlign: 'center', color: 'hsl(var(--muted-foreground) / 0.6)', margin: '0.75rem 0 0.5rem', letterSpacing: '0.2em', fontSize: '0.8rem' }}>
-            ~*~
-          </div>
-          <PostReactions />
-        </article>
-      </div>
-    </div>
-    </PostReactionsProvider>
+        </div>
+      </PostReactionsProvider>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}

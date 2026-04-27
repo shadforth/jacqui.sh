@@ -1,5 +1,5 @@
-import { Music } from "lucide-react"
-import { IpodMarquee } from "@/components/IpodMarquee"
+import { Music } from 'lucide-react'
+import { IpodMarquee } from '@/components/IpodMarquee'
 
 interface IpodNowPlayingProps {
   trackName: string
@@ -10,15 +10,21 @@ interface IpodNowPlayingProps {
 }
 
 const BAR_PROPS = [
-  { delay: '0s',    duration: '0.50s' },
+  { delay: '0s', duration: '0.50s' },
   { delay: '0.15s', duration: '0.65s' },
   { delay: '0.08s', duration: '0.45s' },
   { delay: '0.22s', duration: '0.60s' },
 ]
 
-export const IpodNowPlaying = ({ trackName, trackArtist, trackUrl, isPaused, isTabVisible }: IpodNowPlayingProps) => {
+export const IpodNowPlaying = ({
+  trackName,
+  trackArtist,
+  trackUrl,
+  isPaused,
+  isTabVisible,
+}: IpodNowPlayingProps) => {
   const shouldPause = isPaused || !isTabVisible
-  
+
   return (
     <>
       <span className="media-label ipod-label">
@@ -33,18 +39,16 @@ export const IpodNowPlaying = ({ trackName, trackArtist, trackUrl, isPaused, isT
         linkClassName="song-title-link"
         isPaused={shouldPause}
       />
-      <span className="media-subtitle ipod-artist truncate">
-        {trackArtist}
-      </span>
+      <span className="media-subtitle ipod-artist truncate">{trackArtist}</span>
       <div className="ipod-visualiser-container">
         {BAR_PROPS.map((bar, i) => (
           <div
             key={i}
             className="ipod-visualiser-bar"
-            style={{ 
+            style={{
               animationDuration: bar.duration,
               animationDelay: bar.delay,
-              animationPlayState: shouldPause ? 'paused' : 'running'
+              animationPlayState: shouldPause ? 'paused' : 'running',
             }}
           />
         ))}

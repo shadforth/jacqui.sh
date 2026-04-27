@@ -11,11 +11,9 @@ export const CurrentMedia = async () => {
 
   return (
     <section className="mt-14" style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-
       {track && <IpodCard track={track} />}
 
       {reading && <KindleCard reading={reading} />}
-
     </section>
   )
 }

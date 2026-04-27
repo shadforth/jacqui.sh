@@ -25,7 +25,16 @@ export function getAllPosts(): PostMeta[] {
     .map((file) => {
       const slug = file.replace(/\.mdx$/, '')
       const { data } = matter(fs.readFileSync(path.join(postsDir, file), 'utf8'))
-      return { slug, title: data.title, date: data.date, categories: data.categories, description: data.description, image: data.image, favourite: data.favourite, emojis: data.emojis }
+      return {
+        slug,
+        title: data.title,
+        date: data.date,
+        categories: data.categories,
+        description: data.description,
+        image: data.image,
+        favourite: data.favourite,
+        emojis: data.emojis,
+      }
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
@@ -34,11 +43,24 @@ export function getPost(slug: string): Post | null {
   const filePath = path.join(postsDir, `${slug}.mdx`)
   if (!fs.existsSync(filePath)) return null
   const { data, content } = matter(fs.readFileSync(filePath, 'utf8'))
-  return { slug, title: data.title, date: data.date, categories: data.categories, description: data.description, image: data.image, favourite: data.favourite, emojis: data.emojis, content }
+  return {
+    slug,
+    title: data.title,
+    date: data.date,
+    categories: data.categories,
+    description: data.description,
+    image: data.image,
+    favourite: data.favourite,
+    emojis: data.emojis,
+    content,
+  }
 }
 
 export function formatDate(dateStr: string, long = false): string {
-  return new Date(dateStr).toLocaleDateString('en-GB', { month: long ? 'long' : 'short', year: 'numeric' })
+  return new Date(dateStr).toLocaleDateString('en-GB', {
+    month: long ? 'long' : 'short',
+    year: 'numeric',
+  })
 }
 
 export type Heading = { level: number; text: string; id: string }

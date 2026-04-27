@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from 'next/image'
 
 interface IpodPhotosProps {
   photos: string[]
@@ -9,7 +9,7 @@ export const IpodPhotos = ({ photos, photoIndex }: IpodPhotosProps) => {
   return (
     <div className="ipod-photo-container">
       {photos.map((photo, idx) => (
-        <div 
+        <div
           key={photo}
           className={`ipod-photo-slide ${idx === photoIndex ? 'ipod-photo-active' : ''}`}
         >

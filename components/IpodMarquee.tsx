@@ -11,7 +11,14 @@ interface IpodMarqueeProps {
   isPaused?: boolean
 }
 
-export const IpodMarquee = ({ text, href, style, linkStyle, linkClassName, isPaused = false }: IpodMarqueeProps) => {
+export const IpodMarquee = ({
+  text,
+  href,
+  style,
+  linkStyle,
+  linkClassName,
+  isPaused = false,
+}: IpodMarqueeProps) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const innerRef = useRef<HTMLAnchorElement & HTMLSpanElement>(null)
   const [overflow, setOverflow] = useState(0)

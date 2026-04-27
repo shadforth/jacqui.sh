@@ -2,7 +2,10 @@ import { Suspense } from 'react'
 import { getAllPosts } from '@/lib/posts'
 import { WritingList } from '@/components/WritingList'
 
-export const metadata = { title: 'Writing', description: 'Blog posts and travel writing by Jacqui Shadforth.' }
+export const metadata = {
+  title: 'Writing',
+  description: 'Blog posts and travel writing by Jacqui Shadforth.',
+}
 
 export default function WritingPage() {
   const posts = getAllPosts()

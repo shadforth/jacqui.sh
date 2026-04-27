@@ -1,4 +1,4 @@
-import { SkipBack, SkipForward, Play, Pause } from "lucide-react"
+import { SkipBack, SkipForward, Play, Pause } from 'lucide-react'
 
 type View = 'nowPlaying' | 'menu' | 'videos' | 'photos'
 
@@ -19,15 +19,11 @@ export const IpodClickWheel = ({
   pressButton,
   handlePrevPhoto,
   handleNextPhoto,
-  setIsPaused
+  setIsPaused,
 }: IpodClickWheelProps) => {
   return (
     <div className="ipod-clickwheel">
-      <button
-        aria-label="Menu"
-        onClick={handleMenu}
-        className="ipod-menu-button"
-      >
+      <button aria-label="Menu" onClick={handleMenu} className="ipod-menu-button">
         Menu
       </button>
 
@@ -51,7 +47,7 @@ export const IpodClickWheel = ({
 
       <button
         aria-label={isPaused ? 'Play' : 'Pause'}
-        onClick={() => pressButton('play', () => setIsPaused(p => !p))}
+        onClick={() => pressButton('play', () => setIsPaused((p) => !p))}
         className="ipod-button"
         style={{ bottom: '5px' }}
       >

@@ -10,34 +10,32 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   const post = getPost(slug)
 
   return new ImageResponse(
-    (
+    <div
+      style={{
+        background: '#f7f3ec',
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        padding: '80px',
+        fontFamily: 'sans-serif',
+      }}
+    >
       <div
         style={{
-          background: '#f7f3ec',
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          padding: '80px',
-          fontFamily: 'sans-serif',
+          fontSize: 58,
+          fontWeight: 700,
+          color: '#1a1a1a',
+          lineHeight: 1.2,
+          marginBottom: 32,
+          maxWidth: '900px',
         }}
       >
-        <div
-          style={{
-            fontSize: 58,
-            fontWeight: 700,
-            color: '#1a1a1a',
-            lineHeight: 1.2,
-            marginBottom: 32,
-            maxWidth: '900px',
-          }}
-        >
-          {post?.title ?? 'Post'}
-        </div>
-        <div style={{ fontSize: 28, color: '#888' }}>jacqui.sh</div>
+        {post?.title ?? 'Post'}
       </div>
-    ),
+      <div style={{ fontSize: 28, color: '#888' }}>jacqui.sh</div>
+    </div>,
     { ...size }
   )
 }

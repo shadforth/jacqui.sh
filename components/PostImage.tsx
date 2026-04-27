@@ -1,5 +1,5 @@
-import Image from "next/image"
-import { getBlurDataURL } from "@/lib/blur"
+import Image from 'next/image'
+import { getBlurDataURL } from '@/lib/blur'
 
 interface PostImageProps {
   src: string
@@ -10,9 +10,16 @@ interface PostImageProps {
   contain?: boolean
 }
 
-export const PostImage = async ({ src, alt = "", caption, source, priority = false, contain = false }: PostImageProps) => {
+export const PostImage = async ({
+  src,
+  alt = '',
+  caption,
+  source,
+  priority = false,
+  contain = false,
+}: PostImageProps) => {
   const blurDataURL = await getBlurDataURL(src)
-  const blurProps = blurDataURL ? { placeholder: "blur" as const, blurDataURL } : {}
+  const blurProps = blurDataURL ? { placeholder: 'blur' as const, blurDataURL } : {}
 
   return (
     <figure className="not-prose my-4 overflow-hidden rounded-md">
@@ -43,16 +50,21 @@ export const PostImage = async ({ src, alt = "", caption, source, priority = fal
       {(caption || source) && (
         <figcaption
           className="mt-2 block text-center text-sm"
-          style={{ color: "hsl(var(--muted-foreground))" }}
+          style={{ color: 'hsl(var(--muted-foreground))' }}
         >
           {caption}
           {source && (
             <span style={{ opacity: 0.7 }}>
-              {caption ? " (" : ""}
-              <a href={source} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">
+              {caption ? ' (' : ''}
+              <a
+                href={source}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2"
+              >
                 source
               </a>
-              {caption ? ")" : ""}
+              {caption ? ')' : ''}
             </span>
           )}
         </figcaption>

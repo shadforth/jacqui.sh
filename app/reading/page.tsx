@@ -1,7 +1,10 @@
 import { BookTitleWithReview } from '@/components/BookTitleWithReview'
 import { getReadBooks, formatReadDate, stars, LAST_UPDATED, type Book } from '@/lib/books'
 
-export const metadata = { title: 'Reading', description: 'Books Jacqui Shadforth has read, with ratings and reviews.' }
+export const metadata = {
+  title: 'Reading',
+  description: 'Books Jacqui Shadforth has read, with ratings and reviews.',
+}
 
 function groupByYear(books: Book[]): [string, Book[]][] {
   const groups = new Map<string, Book[]>()
@@ -27,7 +30,11 @@ export default function ReadingPage() {
         <h1 className="heading-markazi">Reading</h1>
         <span className="reading-last-updated">
           <span className="font-medium">Last updated</span>:{' '}
-          {new Date(LAST_UPDATED).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+          {new Date(LAST_UPDATED).toLocaleDateString('en-GB', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+          })}
         </span>
       </div>
 
@@ -40,25 +47,17 @@ export default function ReadingPage() {
                 key={`${book.title}-${book.author}-${book.dateRead}`}
                 className="reading-book-item"
               >
-                <span className="reading-book-number">
-                  {books.length - i}
-                </span>
+                <span className="reading-book-number">{books.length - i}</span>
                 <div className="min-w-0">
                   <BookTitleWithReview book={book} />
-                  <span className="reading-book-author">
-                    {' '}{book.author}
-                  </span>
+                  <span className="reading-book-author"> {book.author}</span>
                 </div>
                 <div className="reading-book-meta">
                   {book.myRating > 0 && (
-                    <span className="reading-book-rating">
-                      {stars(book.myRating)}
-                    </span>
+                    <span className="reading-book-rating">{stars(book.myRating)}</span>
                   )}
                   {book.dateRead && (
-                    <span className="reading-book-date">
-                      {formatReadDate(book.dateRead)}
-                    </span>
+                    <span className="reading-book-date">{formatReadDate(book.dateRead)}</span>
                   )}
                 </div>
               </li>

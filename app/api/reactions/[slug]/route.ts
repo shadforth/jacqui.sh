@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from "next/server"
-import { redis } from "@/lib/redis"
+import { NextRequest, NextResponse } from 'next/server'
+import { redis } from '@/lib/redis'
 
 type Params = { params: Promise<{ slug: string }> }
 
@@ -29,19 +29,19 @@ export async function POST(req: NextRequest, { params }: Params) {
   const { slug } = await params
 
   const ip =
-    req.headers.get("x-forwarded-for")?.split(",")[0].trim() ??
-    req.headers.get("x-real-ip") ??
-    "unknown"
+    req.headers.get('x-forwarded-for')?.split(',')[0].trim() ??
+    req.headers.get('x-real-ip') ??
+    'unknown'
 
   const allowed = await checkRateLimit(ip)
   if (!allowed) {
-    return NextResponse.json({ error: "Too many requests" }, { status: 429 })
+    return NextResponse.json({ error: 'Too many requests' }, { status: 429 })
   }
 
   const { emoji, delta } = await req.json()
 
-  if (typeof emoji !== "string" || emoji.length > 10 || (delta !== 1 && delta !== -1)) {
-    return NextResponse.json({ error: "Invalid request" }, { status: 400 })
+  if (typeof emoji !== 'string' || emoji.length > 10 || (delta !== 1 && delta !== -1)) {
+    return NextResponse.json({ error: 'Invalid request' }, { status: 400 })
   }
 
   const newCount = await redis.hincrby(`reactions:${slug}`, emoji, delta)

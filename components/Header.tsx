@@ -25,18 +25,26 @@ export function Header() {
   const [glitching, setGlitching] = useState(false)
   const glitchTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  const handleChaoticGoodClick = useCallback((e: React.MouseEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    if (glitching) return
-    setGlitching(true)
-    glitchTimer.current = setTimeout(() => {
-      setGlitching(false)
-      router.push('/')
-    }, 800)
-  }, [glitching, router])
+  const handleChaoticGoodClick = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault()
+      e.stopPropagation()
+      if (glitching) return
+      setGlitching(true)
+      glitchTimer.current = setTimeout(() => {
+        setGlitching(false)
+        router.push('/')
+      }, 800)
+    },
+    [glitching, router]
+  )
 
-  useEffect(() => () => { if (glitchTimer.current) clearTimeout(glitchTimer.current) }, [])
+  useEffect(
+    () => () => {
+      if (glitchTimer.current) clearTimeout(glitchTimer.current)
+    },
+    []
+  )
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -114,7 +122,10 @@ export function Header() {
                 <span
                   className="transition-colors duration-150 group-hover:text-[hsl(var(--muted-foreground))] hover:text-orange-500 dark:hover:text-orange-400 cursor-pointer"
                   onClick={handleChaoticGoodClick}
-                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleChaoticGoodClick(e as unknown as React.MouseEvent) }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ')
+                      handleChaoticGoodClick(e as unknown as React.MouseEvent)
+                  }}
                   role="button"
                   tabIndex={0}
                   aria-label="Chaotic good"
@@ -128,7 +139,12 @@ export function Header() {
               {navItems.map(({ label, href, icon }) => {
                 const isActive = pathname === href || (href !== '/' && pathname.startsWith(href))
                 return (
-                  <Link key={href} href={href} className={navLinkClass(isActive)} onClick={() => track('nav_click', { page: label })}>
+                  <Link
+                    key={href}
+                    href={href}
+                    className={navLinkClass(isActive)}
+                    onClick={() => track('nav_click', { page: label })}
+                  >
                     {icon}
                     {label}
                   </Link>
@@ -144,7 +160,11 @@ export function Header() {
               aria-label={menuOpen ? 'Close menu' : 'Open menu'}
               onClick={() => setMenuOpen((o) => !o)}
             >
-              {menuOpen ? <X className="h-5 w-5" strokeWidth={2} aria-hidden /> : <Menu className="h-5 w-5" strokeWidth={2} aria-hidden />}
+              {menuOpen ? (
+                <X className="h-5 w-5" strokeWidth={2} aria-hidden />
+              ) : (
+                <Menu className="h-5 w-5" strokeWidth={2} aria-hidden />
+              )}
             </button>
           </div>
 
@@ -159,7 +179,14 @@ export function Header() {
                   const isActive = pathname === href || (href !== '/' && pathname.startsWith(href))
                   return (
                     <li key={href}>
-                      <Link href={href} className={navLinkClass(isActive)} onClick={() => { setMenuOpen(false); track('nav_click', { page: label }) }}>
+                      <Link
+                        href={href}
+                        className={navLinkClass(isActive)}
+                        onClick={() => {
+                          setMenuOpen(false)
+                          track('nav_click', { page: label })
+                        }}
+                      >
                         {icon}
                         {label}
                       </Link>

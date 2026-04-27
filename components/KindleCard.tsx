@@ -1,9 +1,9 @@
 'use client'
 
-import { useState } from "react"
-import { BookOpen } from "lucide-react"
-import { track } from "@vercel/analytics"
-import Image from "next/image"
+import { useState } from 'react'
+import { BookOpen } from 'lucide-react'
+import { track } from '@vercel/analytics'
+import Image from 'next/image'
 
 interface ReadingData {
   title: string
@@ -32,7 +32,10 @@ export const KindleCard = ({ reading }: { reading: ReadingData }) => {
 
   return (
     <div className="media-card">
-      <div className={`media-screen-base kindle-screen ${flashing > 0 ? 'eink-page-turn' : ''}`} key={flashing}>
+      <div
+        className={`media-screen-base kindle-screen ${flashing > 0 ? 'eink-page-turn' : ''}`}
+        key={flashing}
+      >
         {showCover && reading.cover ? (
           <div className="kindle-cover-container">
             <Image
@@ -60,22 +63,14 @@ export const KindleCard = ({ reading }: { reading: ReadingData }) => {
                 {reading.title}
               </a>
             ) : (
-              <span className="media-title kindle-title leading-snug">
-                {reading.title}
-              </span>
+              <span className="media-title kindle-title leading-snug">{reading.title}</span>
             )}
-            <span className="media-subtitle kindle-author truncate">
-              {reading.author}
-            </span>
+            <span className="media-subtitle kindle-author truncate">{reading.author}</span>
           </>
         )}
       </div>
 
-      <button
-        onClick={handlePageTurn}
-        aria-label="Turn page"
-        className="kindle-button"
-      />
+      <button onClick={handlePageTurn} aria-label="Turn page" className="kindle-button" />
     </div>
   )
 }

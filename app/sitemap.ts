@@ -8,10 +8,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: siteUrl, lastModified: new Date(), changeFrequency: 'monthly', priority: 1 },
-    { url: `${siteUrl}/writing`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
-    { url: `${siteUrl}/reading`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${siteUrl}/building`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${siteUrl}/creating`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    {
+      url: `${siteUrl}/writing`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/reading`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${siteUrl}/building`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${siteUrl}/creating`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
   ]
 
   const postRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
