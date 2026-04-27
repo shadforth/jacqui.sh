@@ -1,151 +1,113 @@
-# Instructions for AI agents on jacqui.sh
+# CLAUDE.md - jacqui.sh
 
-You are a Senior Full-Stack Developer and Expert in ReactJS, NextJS, TypeScript, and modern UI/UX frameworks. You carefully provide accurate, factual, and thoughtful answers.
+jacqui.sh is Jacqui Shadforth's personal website: a place to share what she finds interesting across writing, reading, creating, and building. Developed with Claude Code + the Superpowers skills system.
 
-jacqui.sh is Jacqui Shadforth's personal website. It is a place for her to share everything she thinks is interesting in her life.
+## About Jacqui and this site
 
-## AI workflow (Superpowers)
+Jacqui is a software developer and designer who writes about AI, creativity, and the things she finds genuinely interesting. The site should feel warm, personal, and a little playful - never corporate or polished to the point of sterility.
 
-This project is developed with Claude Code + the Superpowers skills system. When working on this repo as an AI agent:
+She has strong opinions about craft: writing should be honest and specific, design should get out of the way of the content, and code should be something to be proud of. The little details matter. She cares about doing right by the user; she values accessibility, empathy, and inclusivity. She built this site alongside Claude, and treats that collaboration as something real.
 
-- **Before any new feature or significant refactor**: invoke `superpowers:brainstorming` to think through the approach
-- **Before multi-step implementations**: use plan mode (`superpowers:writing-plans`) to draft a step-by-step plan and get approval before coding
-- **For UI work**: consider `superpowers:frontend-design` for component and layout decisions
-- **After completing a major step**: use `superpowers:code-reviewer` to validate against the plan and coding standards
+## Architecture
 
-Always check if a skill applies before starting work.
+Next.js 16 App Router, statically generated at build time. Content is MDX files in `content/posts/` parsed by gray-matter and rendered with `next-mdx-remote/rsc`; custom MDX components are registered in `components/MdxComponents.tsx`. Post reactions (emoji counts) are the only dynamic feature: they write to Redis via a rate-limited API route and are client-fetched on page load. Images live under `public/media/` in a nested hierarchy (`profile/`, `posts/<slug>/`, `creating/`, etc.) and use Next.js `<Image>` with blur placeholders computed at build time by `lib/blur.ts`. Dark mode is CSS-variable-based via `app/globals.css`; Tailwind v4 handles all other styling.
 
-## Core principles
+## Key files
 
-- Follow the user's requirements carefully and to the letter.
-- Always write correct, best practice, DRY principle (Don't Repeat Yourself), bug-free, fully functional and working code aligned to the guidelines below.
-- Focus on readable, maintainable code over premature optimisation, but optimise when it matters (e.g., expensive API calls, Redis queries).
-- Fully implement all requested functionality.
-- Leave NO todos, placeholders or missing pieces.
-- Ensure code is complete: verify thoroughly finalised.
-- Include all required imports, and ensure proper naming of key components.
-- Be concise. Minimise any other prose.
-- If you think there might not be a correct answer, say so.
-- If you do not know the answer, say so, instead of guessing.
+- `lib/posts.ts` — `getAllPosts`, `getPost`, `extractHeadings`, `formatDate`, `slugify`. Single source of truth for reading and shaping MDX content.
+- `components/MdxComponents.tsx` — registers all custom components available in MDX (`PostImage`, `Quote`, `VibeCodingConversation`, heading overrides, etc.). Add new MDX components here.
+- `app/writing/[slug]/page.tsx` — post page: sidebar with date/tags/TOC, article body with `MDXRemote`, reactions, JSON-LD schema, OG metadata.
+- `app/globals.css` — CSS variables for theming, Tailwind base overrides, rehype-pretty-code specificity fixes, blockquote and prose styles.
+- `lib/redis.ts` — singleton Redis client (ioredis). Requires `REDIS_URL` env var.
+- `app/api/reactions/[slug]/route.ts` — GET/POST for emoji reactions. Redis hash per slug (`reactions:<slug>`), rate-limited to 20 req/min per IP.
+- `lib/blur.ts` — generates base64 blur placeholders for `<PostImage>` at build time.
+- `next.config.ts` — CSP headers, no powered-by header, image domain allowlist.
+
+## Commands
+
+Scripts in `scripts/` wrap npm:
+
+| Script             | Description                  |
+| ------------------ | ---------------------------- |
+| `./scripts/dev`    | Start dev server (Turbopack) |
+| `./scripts/build`  | Production build             |
+| `./scripts/lint`   | ESLint                       |
+| `./scripts/format` | Prettier (format all files)  |
+| `./scripts/start`  | Start production server      |
+
+Always run `./scripts/build` and `./scripts/lint` before considering work complete.
 
 ## Tech stack
 
-- **Frontend**: Next.js 16.2.3, React 19.2.4, TypeScript
+- **Frontend**: Next.js 16, React 19, TypeScript
 - **Styling**: TailwindCSS 4
 - **Icons**: Lucide React
-- **Content**: MDX (next-mdx-remote), gray-matter
-- **Analytics**: Vercel Analytics
+- **Content**: MDX (`next-mdx-remote`), gray-matter
 - **Data**: Redis (ioredis)
+- **Analytics**: Vercel Analytics
 
-## Scripts
+## AI workflow
 
-Common tasks are available as executable scripts in the `scripts/` directory:
+This project uses Claude Code + the Superpowers skills system. Invoke skills before starting work:
 
-| Script | Command | Description |
-|--------|---------|-------------|
-| `./scripts/dev` | `npm run dev` | Start dev server (Turbopack) |
-| `./scripts/build` | `npm run build` | Build for production |
-| `./scripts/lint` | `npm run lint` | Run ESLint |
-| `./scripts/start` | `npm run start` | Start production server |
+- **New feature or significant refactor**: `superpowers:brainstorming`
+- **Multi-step implementation**: `superpowers:writing-plans`
+- **UI work**: `superpowers:frontend-design`
+- **After a major step**: `superpowers:code-reviewer`
 
-## Code style guidelines
+## Core principles
+
+- Follow requirements carefully and to the letter. Leave no todos, placeholders, or missing pieces.
+- Write correct, bug-free, DRY code. Fully implement all requested functionality.
+- Readable and maintainable over premature optimisation; optimise where it matters (Redis queries, expensive API calls).
+- Be concise. If you don't know, say so rather than guessing.
+
+## Code style
 
 ### General
 
-- **Use single quotes** (`'`) for strings, not double quotes (`"`)
-- **Use British English** spelling (e.g., "colour" not "color", "optimise" not "optimize", "behaviour" not "behavior")
-- **Use Sentence case** for all text and headings (only first letter capitalised), never Title Case
-- **Do not use em dashes** (`--`). Use a comma, colon, or rewrite the sentence instead
-- Use early returns whenever possible to make the code more readable
-- Use descriptive variable and function/const names
-- Event functions should be named with a "handle" prefix (e.g., `handleClick`, `handleKeyDown`)
-- Use `const` instead of `function` declarations (e.g., `const toggle = () => {}`)
-- Always define types when possible
+- Single quotes (`'`), no semicolons — enforced by Prettier (`.prettierrc`)
+- British English (colour, optimise, behaviour)
+- Sentence case for all text and headings; never title case
+- No em dashes. Use a comma, colon, or rewrite
+- Early returns over nested conditionals
+- `const` over `function` declarations
+- Event handlers named with `handle` prefix (`handleClick`, `handleKeyDown`)
+- Always define types
+- Import paths use `@/` alias (e.g. `import { redis } from '@/lib/redis'`)
 
 ### TypeScript
 
-- Always use proper types - avoid `any` when possible
-- Use type inference where appropriate, but be explicit for function parameters and return types
-- Fix all TypeScript errors before considering code complete
-- Use proper null checks for optional values
+- Avoid `any`; use proper types or generics
+- Explicit types for function parameters and return values; inference elsewhere
+- Resolve all TypeScript errors before considering code complete
+- Null-check all optional values
 
 ### Styling
 
-- Always use Tailwind classes for styling HTML elements; avoid inline CSS or `<style>` tags
-- Use `clsx` or template literals for conditional classes instead of ternary operators when possible
-- Use `themeClasses` from `@/lib/theme` for consistent theming
-- Implement dark mode support using Tailwind's `dark:` prefix
+- Tailwind classes for all styling; avoid inline styles or `<style>` tags except where fighting Tailwind Typography specificity (follow patterns in `globals.css`)
+- `dark:` prefix for dark mode support
+- `clsx` or template literals for conditional classes
 
 ### Accessibility
 
-- Implement accessibility features on interactive elements
-- Include `aria-label`, `tabindex`, `role` attributes where appropriate
-- Ensure keyboard navigation works for all interactive elements
-
-## Component patterns
+- `aria-label`, `tabindex`, `role` on all interactive elements
+- Keyboard navigation for everything interactive
 
 ### React components
 
-- Use `'use client'` directive for client components
-- Prefer functional components with hooks
-- Use TypeScript interfaces for props
-- Extract reusable components to `components/`
-- Use proper key props for lists
-- **If React code is written multiple times, consider moving it into a reusable React component.** Look for repeated JSX patterns, UI elements, or logic that appears in multiple places
-
-### Icons
-
-- Import icons from `lucide-react`
-- Always import only the icons used in the component
-- Use the `size` prop for sizing (e.g., `<Icon size={16} />`) or the `className` prop for Tailwind sizing
-
-## Performance considerations
-
-- Use React's built-in optimisations (keys, memoization when needed)
-- Lazy load heavy components when appropriate
-- Optimise images (use Next.js Image component with proper sizing)
-
-## Working style preferences
-
-### Before implementing
-
-- Invoke relevant Superpowers skills (see AI workflow section above)
-- Explain your approach and reasoning
-- Consider performance implications
-- Ask clarifying questions if requirements are unclear
-
-### During implementation
-
-- Write clean, readable code
-- Follow existing patterns in the codebase
-- Remove unused code and dead code
-- Fix all TypeScript errors
-- Ensure imports are correct
-
-### After implementation
-
-- Verify the code works as expected
-- Run `./scripts/lint` to check for linting errors
-- Ensure no console errors or warnings
-- Consider edge cases and error scenarios
-
-## Common patterns
-
-### Import paths
-
-- Use `@/` alias for imports from the project root
-- Example: `import { quickLinkClassName } from '@/lib/quick-link'`
+- `'use client'` only when required (event handlers, browser APIs, stateful hooks)
+- TypeScript interfaces for all props
+- Extract repeated JSX into reusable components in `components/`
+- Next.js `<Image>` for all images with a correct `sizes` prop
 
 ## Code quality checklist
 
-Before considering code complete, ensure:
-
-- [ ] All TypeScript errors are resolved
-- [ ] All imports are correct
-- [ ] Single quotes used consistently
-- [ ] Error handling is in place
-- [ ] Proper HTTP status codes returned
-- [ ] No console.log statements left in production code
-- [ ] Dark mode support where applicable
-- [ ] Accessibility features implemented
-- [ ] Code follows existing patterns in the codebase
+- [ ] TypeScript errors resolved
+- [ ] Imports correct and complete
+- [ ] `./scripts/format` run (Prettier)
+- [ ] No `console.log` in production code
+- [ ] Dark mode supported where applicable
+- [ ] Accessibility attributes present
+- [ ] `./scripts/build` passes
+- [ ] `./scripts/lint` passes
