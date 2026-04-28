@@ -40,4 +40,4 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## AI development
 
-This project is built with [Claude Code](https://claude.ai/code) and [Superpowers](https://getsuperpowers.com). The `CLAUDE.md` file contains instructions and conventions for AI agents working on this codebase.
+This project is built with [Claude Code](https://claude.ai/code) and [Superpowers](https://github.com/obra/superpowers). The `CLAUDE.md` file contains instructions and conventions for AI agents working on this codebase.
