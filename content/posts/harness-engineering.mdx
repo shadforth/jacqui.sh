@@ -1,0 +1,82 @@
+---
+title: "Harness engineering: Vibe coding with guardrails"
+date: "2026-04-23"
+categories: ["ai", "harness engineering", "spec-driven development", "vibe coding", "superpowers"]
+emojis: ["👩🏻‍💻", "🤖", "👍", "❤️", "👏"]
+description: "How I went from AI sceptic to cautious convert, and discovered there's a name for what I was doing."
+---
+
+If you're still writing software by hand, you've already fallen behind.
+
+I know, because not long ago, I was that person. I couldn't understand why some of my teammates were so enthusiastic about AI; meanwhile, I was seeing it constantly hallucinate, disobey, and write simply incredible unit tests for me like this one below:
+
+```go caption="An actual test AI wrote for me"
+func TestMyMethod(t *testing.T) {
+  actual := "Hello, world"
+  expected := "Hello, world"
+
+  _ = obj.myMethod()
+
+  assert.Equal(t, expected, actual, "The strings should match")
+}
+```
+
+Management kept promising an AI-driven productivity revolution, but all I was getting were hours wasted sifting through code I didn't understand that didn't even do what I'd asked. The cherry on top was AI's confidently incorrect and enthusiastic you're-absolutely-right delivery.
+
+Since then, I've come around to admitting something... it was my own fault.
+
+I realised I hadn't been using AI in the best way, and over the past few months I've gone from reluctant sceptic to convert. What changed my perspective has a name which I've only just learned: **harness engineering**.
+
+## Prompting into the void
+
+The problem with corporate directives on AI adoption is that software developers aren't properly trained to use AI in the most effective way.
+
+My frustration grew as the quality of AI's output directly reflected the quality of its input (I just didn't know this yet). I'd simply fire up a terminal and start commanding it to do this and that. I didn't realise that this is equivalent to telling someone how to make cookies, but only trickle-feeding them instructions, one step at a time.
+
+<VibeCodingConversation caption="Trickle-feeding prompts to AI leads to poor outcomes" />
+
+## The turning point: Waterfall over agile
+
+The pattern became visible in the personal projects I was building: **the more upfront thinking I did at the start, the better the results**.
+
+Less of agile's move fast and iterate (do this, change that, no wait, change it again) and more waterfall: know exactly what you want, write it down clearly, *then* build. While agile's flexibility is powerful for human teams, with AI, the cost of ambiguity is much higher. Spec-driven development works best with AI because it give models the context they need to provide you with precise and useful output.
+
+It's probably why Plan mode felt immediately right the first time I used it - it refuses to let you skip the thinking upfront.
+
+## Harnessing harnesses
+
+It turns out there is a name for what I had stumbled into: **harness engineering**.
+
+Ryan Lopopolo, a principal engineer at OpenAI, <a href="https://www.youtube.com/watch?v=am_oeAoUhew" target="_blank" rel="noopener noreferrer">describes the concept</a> simply: **Agent = Model + Harness**. The model is the AI itself, and the harness is everything you build around it to make it reliable. Thoughtworks architect Birgitta Böckeler <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener noreferrer">writes about it</a> on Martin Fowler's blog, framing harnesses as the system of guides and feedback loops that direct human input to the most critical parts of the system.
+
+The harness has two parts:
+
+1. **Feedforward controls** (guides) anticipate problems before they happen. These are the upfront constraints that reduce what your AI can do wrong, e.g. specs, rules files, or architectural decision records. Basically, a plan written before any code is touched.
+
+2. **Feedback controls** (sensors) catch problems after the fact and let the agent self-correct: linters, type checkers, build scripts, and so on. If AI generates code that fails `tsc` or ESLint, it knows to fix it without human intervention.
+
+<PostImage src="/media/posts/harness-engineering/harness-overview.png" alt="Diagram showing feedforward guides and feedback sensors wrapping an AI coding agent" caption="The harness in diagram form" source="https://martinfowler.com/articles/harness-engineering.html" contain />
+
+What I had been building, without knowing the term, was a harness. The waterfall instinct was right because specs act as feedforward controls, and Plan mode provides this further. Linting and build and test scripts serve as feedback controls.
+
+The harness can go much further than that. Garry Tan, CEO of Y Combinator, has a compelling example in <a href="https://github.com/garrytan/gbrain" target="_blank" rel="noopener noreferrer">gbrain</a>. It's a self-wiring knowledge graph that gives AI agents persistent memory across sessions, and it ingests Garry's meetings, emails, and ideas while he sleeps. I haven't used it directly, but studying it shaped how I think about building my own. 
+
+In this way, AI harnesses are personal - they reflect what you know, how you work, and what you want your army of robot agents to understand about you.
+
+## What it looks like in practice
+
+I'm currently experimenting with <a href="https://github.com/obra/superpowers" target="_blank" rel="noopener noreferrer">Superpowers</a>, an agentic skills framework built by <a href="https://blog.fsck.com" target="_blank" rel="noopener noreferrer">Jesse Vincent</a>. Essentially, it's a harness. It forces you to think before you build - brainstorm, spec, code. AI will pepper you with questions during brainstorming. Constraint **is** the point.
+
+<Quote author="Jesse Vincent" url="https://www.youtube.com/watch?v=6YltXh12W-g">
+  "Specs are the things that matter [...] the code doesn't matter now"
+</Quote>
+
+My own site's <a href="https://github.com/shadforth/jacqui.sh" target="_blank" rel="noopener noreferrer">repo</a> is one of my harnesses in its current form. I built it alongside Claude, and the repo's <a href="https://github.com/shadforth/jacqui.sh/blob/main/CLAUDE.md" target="_blank" rel="noopener noreferrer">CLAUDE.md</a> file is a feedforward control: it tells the agent who I am, how I work, and what this codebase expects before a single line is written. The linting and build scripts are the feedback controls. For now, it's a small harness - but it works well so far.
+
+## Harness engineering changes everything
+
+As a software developer, you are not just writing code anymore. You are building the environment in which code gets written.
+
+Our profession is changing beneath our feet, and it feels very much like a sink-or-swim moment. To be able to write clear specs with feedforward and feedback loops, you need to understand exactly what you're building, the business domain, and the boundaries within which you're operating. The spec becomes the product; the code is almost incidental.
+
+Harness engineering is what finally made AI useful to me. The real shift was in building the guardrails and feedback loops that helps AI understand what it should and should not do. If you're feeling stuck or underwhelmed by the hype, try building your own harness. Start small, but be deliberate. Today, prompting into the void is a choice now, not a limitation.

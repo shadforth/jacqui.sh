@@ -4,6 +4,8 @@ import { PostImage } from '@/components/PostImage'
 import { PostImagePair } from '@/components/PostImagePair'
 import { PostImagePortraitPair } from '@/components/PostImagePortraitPair'
 import { Reveal } from '@/components/Reveal'
+import { VibeCodingConversation } from '@/components/VibeCodingConversation'
+import { Quote } from '@/components/Quote'
 
 function getChildText(children: React.ReactNode): string {
   if (typeof children === 'string') return children
@@ -86,4 +88,6 @@ export const mdxComponents = {
   PostImagePair,
   PostImagePortraitPair,
   Reveal,
+  VibeCodingConversation,
+  Quote,
 }
