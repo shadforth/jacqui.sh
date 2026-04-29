@@ -68,7 +68,7 @@ export default function HomePage() {
           <NutshellNut />
         </h2>
         <div className="text-muted-body content-stack">
-          <p>I&rsquo;m an Aussie software engineer and designer based in London.</p>
+          <p>I&rsquo;m an Aussie software developer and designer based in London.</p>
           <p>
             I have a knack for translating complex technical concepts into everyday language. I
             obsess over the details, and I love building thoughtful products that delight users.
