@@ -106,7 +106,7 @@ export function Header() {
                 }}
               >
                 <span className="transition-colors duration-150 group-hover:text-[hsl(var(--muted-foreground))]">
-                  Engineer
+                  Developer
                 </span>
                 <span aria-hidden className="text-muted-foreground">
                   {' '}

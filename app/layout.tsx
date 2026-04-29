@@ -20,7 +20,7 @@ const markaziText = Markazi_Text({
 
 const siteUrl = 'https://jacqui.sh'
 const siteDescription =
-  'Personal site of Jacqui Shadforth — an Aussie software engineer and designer based in London.'
+  'Personal site of Jacqui Shadforth — an Aussie software developer and designer based in London.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   description: siteDescription,
   keywords: [
     'Jacqui Shadforth',
-    'software engineer',
+    'software developer',
     'designer',
     'London',
     'personal site',
@@ -73,8 +73,8 @@ const personSchema = {
   name: 'Jacqui Shadforth',
   url: siteUrl,
   sameAs: ['https://twitter.com/jacquishadforth'],
-  jobTitle: 'Software Engineer & Designer',
-  description: 'Aussie software engineer and designer based in London.',
+  jobTitle: 'Software Developer & Designer',
+  description: 'Aussie software developer and designer based in London.',
 }
 
 export const viewport = {
