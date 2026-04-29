@@ -51,7 +51,7 @@ export default function HomePage() {
             <Link href="/creating" className={quickLinkClassName}>
               Creating
             </Link>
-            <span className="text-muted"> for fun on a range of different mediums</span>
+            <span className="text-muted"> art, food, and whatever else takes my fancy</span>
           </li>
           <li>
             <Link href="/reading" className={quickLinkClassName}>
