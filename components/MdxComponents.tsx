@@ -6,9 +6,6 @@ import { PostImagePortraitPair } from '@/components/PostImagePortraitPair'
 import { Reveal } from '@/components/Reveal'
 import { VibeCodingConversation } from '@/components/VibeCodingConversation'
 import { Quote } from '@/components/Quote'
-import { PronunciationTable } from '@/components/PronunciationTable'
-import { PronunciationRow } from '@/components/PronunciationRow'
-import { GrammarCasesTable } from '@/components/GrammarCasesTable'
 
 function getChildText(children: React.ReactNode): string {
   if (typeof children === 'string') return children
@@ -93,7 +90,4 @@ export const mdxComponents = {
   Reveal,
   VibeCodingConversation,
   Quote,
-  PronunciationTable,
-  PronunciationRow,
-  GrammarCasesTable,
 }

@@ -102,21 +102,21 @@
 }
 
 :root {
-  --background: 210 30% 97%;
-  --foreground: 215 20% 20%;
-  --muted-foreground: 215 12% 52%;
-  --subheading: 215 18% 32%;
-  --accent: 200 70% 55%;
-  --border: 210 18% 86%;
+  --background: 28 30% 97%;
+  --foreground: 22 22% 18%;
+  --muted-foreground: 22 10% 50%;
+  --subheading: 22 18% 32%;
+  --accent: 16 68% 55%;
+  --border: 28 16% 84%;
 }
 
 [data-theme='dark'] {
-  --background: 215 25% 10%;
-  --foreground: 210 20% 88%;
-  --muted-foreground: 210 10% 65%;
-  --subheading: 210 15% 72%;
-  --accent: 200 60% 55%;
-  --border: 215 15% 20%;
+  --background: 22 20% 11%;
+  --foreground: 28 20% 88%;
+  --muted-foreground: 28 8% 65%;
+  --subheading: 25 15% 70%;
+  --accent: 16 60% 55%;
+  --border: 22 12% 22%;
 }
 
 body {
@@ -910,12 +910,12 @@ body {
 }
 
 ::selection {
-  background-color: hsl(200 70% 55% / 0.3);
+  background-color: hsl(16 68% 55% / 0.25);
   color: hsl(var(--foreground));
 }
 
 [data-theme='dark'] ::selection {
-  background-color: hsl(200 60% 55% / 0.4);
+  background-color: hsl(16 60% 55% / 0.4);
   color: hsl(var(--foreground));
 }
 
