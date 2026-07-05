@@ -6,6 +6,9 @@ import { PostImagePortraitPair } from '@/components/PostImagePortraitPair'
 import { Reveal } from '@/components/Reveal'
 import { VibeCodingConversation } from '@/components/VibeCodingConversation'
 import { Quote } from '@/components/Quote'
+import { PronunciationTable } from '@/components/PronunciationTable'
+import { PronunciationRow } from '@/components/PronunciationRow'
+import { GrammarCasesTable } from '@/components/GrammarCasesTable'
 
 function getChildText(children: React.ReactNode): string {
   if (typeof children === 'string') return children
@@ -18,7 +21,7 @@ function getChildText(children: React.ReactNode): string {
   return ''
 }
 
-const markazi = { fontFamily: 'var(--font-markazi), serif' } as const
+const markazi = { fontFamily: 'var(--font-dm-sans), sans-serif' } as const
 
 const sectionHeading: React.CSSProperties = {
   ...markazi,
@@ -90,4 +93,7 @@ export const mdxComponents = {
   Reveal,
   VibeCodingConversation,
   Quote,
+  PronunciationTable,
+  PronunciationRow,
+  GrammarCasesTable,
 }

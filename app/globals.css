@@ -10,8 +10,8 @@
   --color-accent: hsl(var(--accent));
   --color-border: hsl(var(--border));
 
-  --font-sans: var(--font-fredoka), system-ui, sans-serif;
-  --font-serif: var(--font-markazi), Georgia, serif;
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+  --font-serif: var(--font-lora), Georgia, serif;
   --font-mono: ui-monospace, monospace;
 
   --radius: 0.35rem;
@@ -117,6 +117,28 @@
   --subheading: 210 15% 72%;
   --accent: 200 60% 55%;
   --border: 215 15% 20%;
+}
+
+body {
+  font-family: var(--font-serif);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sans);
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  font-family: var(--font-sans);
 }
 
 /* Prose images */
@@ -888,12 +910,12 @@ body {
 }
 
 ::selection {
-  background-color: hsl(150 38% 72% / 0.45);
+  background-color: hsl(200 70% 55% / 0.3);
   color: hsl(var(--foreground));
 }
 
 [data-theme='dark'] ::selection {
-  background-color: hsl(150 28% 36% / 0.55);
+  background-color: hsl(200 60% 55% / 0.4);
   color: hsl(var(--foreground));
 }
 
@@ -916,19 +938,19 @@ body {
 
 /* Typography utilities */
 .heading-markazi {
-  font-family: var(--font-markazi), serif;
-  font-size: 1.5rem;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 1.0rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   margin-bottom: 0.25rem;
 }
 
 .heading-markazi-sm {
-  font-family: var(--font-markazi), serif;
-  font-size: 1.1rem;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
 }
 
 .text-muted {

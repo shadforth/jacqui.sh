@@ -82,8 +82,8 @@ export function Header() {
               <span
                 className="transition-colors duration-150 group-hover:text-[hsl(var(--muted-foreground))]"
                 style={{
-                  fontFamily: 'var(--font-markazi), serif',
-                  fontSize: '1.2rem',
+                  fontFamily: 'var(--font-lora), serif',
+                  fontSize: '0.95rem',
                   fontWeight: 700,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
@@ -93,10 +93,10 @@ export function Header() {
                 Jacqui Shadforth
               </span>
               <span
-                className="-mt-0.5"
+                className="mt-1"
                 style={{
                   textTransform: 'lowercase',
-                  fontFamily: 'var(--font-fredoka), sans-serif',
+                  fontFamily: 'var(--font-dm-sans), sans-serif',
                   fontSize: '0.8rem',
                   fontWeight: 400,
                   letterSpacing: '0.04em',
