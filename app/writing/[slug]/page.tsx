@@ -100,8 +100,11 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                 <div>
                   <p
                     style={{
-                      fontSize: '1.1rem',
-                      fontFamily: 'var(--font-markazi), serif',
+                      fontSize: '0.75rem',
+                      fontFamily: 'var(--font-dm-sans), sans-serif',
+                      fontWeight: 700,
+                      letterSpacing: '0.06em',
+                      textTransform: 'uppercase',
                       color: 'hsl(var(--foreground))',
                       marginBottom: '-.25rem',
                     }}
@@ -116,8 +119,11 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                   <div>
                     <p
                       style={{
-                        fontSize: '1.1rem',
-                        fontFamily: 'var(--font-markazi), serif',
+                        fontSize: '0.75rem',
+                        fontFamily: 'var(--font-dm-sans), sans-serif',
+                        fontWeight: 700,
+                        letterSpacing: '0.06em',
+                        textTransform: 'uppercase',
                         color: 'hsl(var(--foreground))',
                         marginBottom: '0.25rem',
                       }}
@@ -159,7 +165,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               <div style={{ marginBottom: '0.25rem' }}>
                 <h1
                   style={{
-                    fontFamily: 'var(--font-markazi), serif',
+                    fontFamily: 'var(--font-lora), serif',
                     fontSize: '2rem',
                     lineHeight: 1.2,
                   }}

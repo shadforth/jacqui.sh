@@ -18,7 +18,7 @@ function getChildText(children: React.ReactNode): string {
   return ''
 }
 
-const markazi = { fontFamily: 'var(--font-markazi), serif' } as const
+const markazi = { fontFamily: 'var(--font-dm-sans), sans-serif' } as const
 
 const sectionHeading: React.CSSProperties = {
   ...markazi,

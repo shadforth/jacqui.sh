@@ -11,10 +11,10 @@ import { quickLinkClassName } from '@/lib/quick-link'
 import { TrackedLink } from '@/components/TrackedLink'
 
 const h2Style: React.CSSProperties = {
-  fontFamily: 'var(--font-markazi), serif',
-  fontSize: '1.1rem',
+  fontFamily: 'var(--font-dm-sans), sans-serif',
+  fontSize: '0.85rem',
   fontWeight: 700,
-  letterSpacing: '0.08em',
+  letterSpacing: '0.06em',
   color: 'hsl(var(--muted-foreground))',
   marginBottom: '0.5rem',
 }
@@ -72,17 +72,7 @@ export function WritingList({ posts }: WritingListProps) {
           marginBottom: '1.8rem',
         }}
       >
-        <h1
-          style={{
-            fontFamily: 'var(--font-markazi), serif',
-            fontSize: '1.5rem',
-            fontWeight: 700,
-            textTransform: 'uppercase',
-            letterSpacing: '0.1em',
-          }}
-        >
-          Writing
-        </h1>
+        <h1 className="heading-markazi">Writing</h1>
 
         {/* Button + dropdown wrapper */}
         <div style={{ position: 'relative', flexShrink: 0 }}>

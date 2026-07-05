@@ -35,11 +35,11 @@ const painting = [
 ]
 
 const h2Style = {
-  fontFamily: 'var(--font-markazi), serif',
-  fontSize: '1.5rem',
+  fontFamily: 'var(--font-dm-sans), sans-serif',
+  fontSize: '1.0rem',
   fontWeight: 700,
   textTransform: 'uppercase' as const,
-  letterSpacing: '0.1em',
+  letterSpacing: '0.08em',
   marginBottom: '0.5rem',
 }
 

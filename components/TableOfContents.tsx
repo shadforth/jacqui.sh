@@ -10,8 +10,11 @@ export function TableOfContents({ headings }: { headings: Heading[] }) {
     <nav aria-label="Table of contents" style={{ paddingRight: '1.5rem' }}>
       <p
         style={{
-          fontSize: '1.1rem',
-          fontFamily: 'var(--font-markazi), serif',
+          fontSize: '0.75rem',
+          fontFamily: 'var(--font-dm-sans), sans-serif',
+          fontWeight: 700,
+          letterSpacing: '0.06em',
+          textTransform: 'uppercase',
           color: 'hsl(var(--foreground))',
           marginBottom: '0.25rem',
         }}
