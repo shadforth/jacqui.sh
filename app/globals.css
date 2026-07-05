@@ -102,21 +102,21 @@
 }
 
 :root {
-  --background: 38 40% 96%;
-  --foreground: 28 22% 18%;
-  --muted-foreground: 28 12% 50%;
-  --subheading: 28 32% 36%;
-  --accent: 150 28% 52%;
-  --border: 38 18% 83%;
+  --background: 210 30% 97%;
+  --foreground: 215 20% 20%;
+  --muted-foreground: 215 12% 52%;
+  --subheading: 215 18% 32%;
+  --accent: 200 70% 55%;
+  --border: 210 18% 86%;
 }
 
 [data-theme='dark'] {
-  --background: 28 18% 11%;
-  --foreground: 38 22% 86%;
-  --muted-foreground: 38 10% 70%;
-  --subheading: 32 28% 68%;
-  --accent: 150 22% 46%;
-  --border: 28 12% 24%;
+  --background: 215 25% 10%;
+  --foreground: 210 20% 88%;
+  --muted-foreground: 210 10% 65%;
+  --subheading: 210 15% 72%;
+  --accent: 200 60% 55%;
+  --border: 215 15% 20%;
 }
 
 /* Prose images */
