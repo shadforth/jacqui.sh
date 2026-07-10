@@ -25,6 +25,14 @@ const baking = [
   { src: '/media/creating/baking/choux.jpeg', alt: 'Choux' },
 ]
 
+const sewing = [
+  { src: '/media/creating/sewing/canvas-tote.jpeg', alt: 'Canvas tote bag' },
+  { src: '/media/creating/sewing/corduroy-bag.jpeg', alt: 'Corduroy bag' },
+  { src: '/media/creating/sewing/corduroy-pouch.jpeg', alt: 'Corduroy pouch' },
+  { src: '/media/creating/sewing/canvas-duffel-progress.jpeg', alt: 'Canvas duffel bag, work in progress' },
+  { src: '/media/creating/sewing/canvas-duffel.jpeg', alt: 'Canvas duffel bag' },
+]
+
 const painting = [
   { src: '/media/creating/painting/01.jpeg', alt: 'Painting study' },
   { src: '/media/creating/painting/02.jpeg', alt: 'Painting study' },
@@ -115,7 +123,7 @@ export default function CreatingPage() {
         <p
           style={{ color: 'hsl(var(--muted-foreground))', lineHeight: 1.7, marginBottom: '1.5rem' }}
         >
-          A certain 2000s isometric chatroom sparked a pixel art obsession that never really faded.
+          A certain 2000s isometric chatroom—whose name I dare not utter here—sparked a pixel art obsession that never really faded.
         </p>
         <ImageGrid items={pixelArt} pixelated priorityFirst />
       </section>
@@ -157,6 +165,16 @@ export default function CreatingPage() {
       <section>
         <h2 style={h2Style}>Baking</h2>
         <ImageGrid items={baking} />
+      </section>
+
+      <section>
+        <h2 style={h2Style}>Sewing</h2>
+        <p
+          style={{ color: 'hsl(var(--muted-foreground))', lineHeight: 1.7, marginBottom: '1.5rem' }}
+        >
+          A desire to hem my own jeans and fix all these oversized tech t-shirts from fitting like dressesヽ(｀Д´#)ﾉ ﾑｷｰ ...has spiralled into a full-blown love for making bags. ( ˶˘ ³˘)♡
+        </p>
+        <ImageGrid items={sewing} />
       </section>
     </div>
   )
