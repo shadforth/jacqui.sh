@@ -83,6 +83,11 @@ export default function HomePage() {
           <p>I&rsquo;m glad you&rsquo;re here! Thanks for stopping by.</p>
         </div>
       </section>
+      <section className="mt-2">
+        <span className="homepage-last-updated">
+          <span className="font-medium">Last updated</span>: 10 July 2026
+        </span>
+      </section>
 
       <CurrentMedia />
     </div>

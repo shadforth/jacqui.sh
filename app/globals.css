@@ -1030,6 +1030,12 @@ body {
   border-radius: 0.3rem;
 }
 
+.homepage-last-updated {
+  color: hsl(var(--muted-foreground));
+  font-size: 0.75rem;
+  opacity: 0.55;
+}
+
 /* Building page utilities */
 .building-header {
   display: flex;
