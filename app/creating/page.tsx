@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export const metadata = {
   title: 'Creating',
-  description: 'Creative work by Jacqui Shadforth — pixel art, baking, and painting.',
+  description: 'Creative work by Jacqui Shadforth — pixel art, baking, and sewing.',
 }
 
 const pixelArt = [
@@ -23,23 +23,16 @@ const baking = [
   { src: '/media/creating/baking/macarons.jpeg', alt: 'Macarons' },
   { src: '/media/creating/baking/sourdough.jpeg', alt: 'Sourdough' },
   { src: '/media/creating/baking/choux.jpeg', alt: 'Choux' },
+  { src: '/media/creating/baking/pastel-de-nata.jpeg', alt: 'Pastel de nata' },
 ]
 
 const sewing = [
   { src: '/media/creating/sewing/canvas-tote.jpeg', alt: 'Canvas tote bag' },
   { src: '/media/creating/sewing/corduroy-bag.jpeg', alt: 'Corduroy bag' },
   { src: '/media/creating/sewing/corduroy-pouch.jpeg', alt: 'Corduroy pouch' },
-  { src: '/media/creating/sewing/canvas-duffel-progress.jpeg', alt: 'Canvas duffel bag, work in progress' },
+  { src: '/media/creating/sewing/cotton-pouch.jpeg', alt: 'Blue floral cotton pouch' },
+  { src: '/media/creating/sewing/canvas-duffel-progress.jpeg', alt: 'Canvas duffel bag, wip' },
   { src: '/media/creating/sewing/canvas-duffel.jpeg', alt: 'Canvas duffel bag' },
-]
-
-const painting = [
-  { src: '/media/creating/painting/01.jpeg', alt: 'Painting study' },
-  { src: '/media/creating/painting/02.jpeg', alt: 'Painting study' },
-  { src: '/media/creating/painting/03.jpeg', alt: 'Painting study' },
-  { src: '/media/creating/painting/04.jpeg', alt: 'Painting study' },
-  { src: '/media/creating/painting/05.jpeg', alt: 'Painting study' },
-  { src: '/media/creating/painting/06.jpeg', alt: 'Painting study' },
 ]
 
 const h2Style = {
@@ -126,40 +119,6 @@ export default function CreatingPage() {
           A certain 2000s isometric chatroom—whose name I dare not utter here—sparked a pixel art obsession that never really faded.
         </p>
         <ImageGrid items={pixelArt} pixelated priorityFirst />
-      </section>
-
-      <section>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'baseline',
-            justifyContent: 'space-between',
-            marginBottom: '0.25rem',
-          }}
-        >
-          <h2 style={{ ...h2Style, marginBottom: 0 }}>Painting</h2>
-          <span
-            style={{ color: 'hsl(var(--muted-foreground))', fontSize: '0.75rem', opacity: 0.55 }}
-          >
-            <span style={{ fontWeight: 500 }}>Medium</span>: Acrylics on claybord
-          </span>
-        </div>
-        <p
-          style={{ color: 'hsl(var(--muted-foreground))', lineHeight: 1.7, marginBottom: '1.5rem' }}
-        >
-          Jim Musil&rsquo;s{' '}
-          <a
-            href="https://jimmusil.com/learn"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline underline-offset-4 hover:text-foreground transition-colors"
-          >
-            landscape
-          </a>{' '}
-          course is brilliant for deconstructing the mechanics. The fear of being crap at a new
-          medium never leaves—I&rsquo;m just getting better at sitting with it.
-        </p>
-        <ImageGrid items={painting} />
       </section>
 
       <section>
