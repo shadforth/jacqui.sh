@@ -1,8 +1,9 @@
-import Image from 'next/image'
+import { LightboxProvider, type GalleryItem } from '@/components/LightboxProvider'
+import { ImageGrid } from '@/components/ImageGrid'
 
 export const metadata = {
   title: 'Creating',
-  description: 'Creative work by Jacqui Shadforth — pixel art, baking, and painting.',
+  description: 'Creative work by Jacqui Shadforth — pixel art, baking, and sewing.',
 }
 
 const pixelArt = [
@@ -23,24 +24,33 @@ const baking = [
   { src: '/media/creating/baking/macarons.jpeg', alt: 'Macarons' },
   { src: '/media/creating/baking/sourdough.jpeg', alt: 'Sourdough' },
   { src: '/media/creating/baking/choux.jpeg', alt: 'Choux' },
+  { src: '/media/creating/baking/pastel-de-nata.jpeg', alt: 'Pastel de nata' },
 ]
 
 const sewing = [
   { src: '/media/creating/sewing/canvas-tote.jpeg', alt: 'Canvas tote bag' },
   { src: '/media/creating/sewing/corduroy-bag.jpeg', alt: 'Corduroy bag' },
   { src: '/media/creating/sewing/corduroy-pouch.jpeg', alt: 'Corduroy pouch' },
-  { src: '/media/creating/sewing/canvas-duffel-progress.jpeg', alt: 'Canvas duffel bag, work in progress' },
+  { src: '/media/creating/sewing/cotton-pouch.jpeg', alt: 'Blue floral cotton pouch' },
+  { src: '/media/creating/sewing/canvas-duffel-progress.jpeg', alt: 'Canvas duffel bag, wip' },
   { src: '/media/creating/sewing/canvas-duffel.jpeg', alt: 'Canvas duffel bag' },
 ]
 
-const painting = [
-  { src: '/media/creating/painting/01.jpeg', alt: 'Painting study' },
-  { src: '/media/creating/painting/02.jpeg', alt: 'Painting study' },
-  { src: '/media/creating/painting/03.jpeg', alt: 'Painting study' },
-  { src: '/media/creating/painting/04.jpeg', alt: 'Painting study' },
-  { src: '/media/creating/painting/05.jpeg', alt: 'Painting study' },
-  { src: '/media/creating/painting/06.jpeg', alt: 'Painting study' },
+const withCategory = (
+  category: string,
+  items: { src: string; alt: string }[],
+  pixelated = false
+): GalleryItem[] => items.map((item) => ({ ...item, category, pixelated }))
+
+const allItems: GalleryItem[] = [
+  ...withCategory('Pixel art', pixelArt, true),
+  ...withCategory('Baking', baking),
+  ...withCategory('Sewing', sewing),
 ]
+
+const pixelArtOffset = 0
+const bakingOffset = pixelArt.length
+const sewingOffset = pixelArt.length + baking.length
 
 const h2Style = {
   fontFamily: 'var(--font-dm-sans), sans-serif',
@@ -51,131 +61,63 @@ const h2Style = {
   marginBottom: '0.5rem',
 }
 
-function ImageGrid({
-  items,
-  pixelated = false,
-  priorityFirst = false,
-}: {
-  items: { src: string; alt: string }[]
-  pixelated?: boolean
-  priorityFirst?: boolean
-}) {
-  if (items.length === 0) {
-    return (
-      <p style={{ color: 'hsl(var(--muted-foreground))', fontSize: '0.875rem' }}>Coming soon.</p>
-    )
-  }
-  return (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
-        gap: '1rem',
-      }}
-    >
-      {items.map((item, i) => (
-        <div
-          key={item.src}
-          className="group relative aspect-square min-h-0 w-full overflow-hidden rounded-sm"
-        >
-          <Image
-            src={item.src}
-            alt={item.alt}
-            fill
-            priority={priorityFirst && i === 0}
-            className={`object-cover${pixelated ? ' image-rendering-pixelated' : ''}`}
-            sizes="(max-width: 640px) 33vw, 22vw"
-          />
-          <div
-            className="pointer-events-none absolute inset-0 flex items-end p-2 opacity-0 transition-opacity group-hover:opacity-100"
-            style={{ background: 'rgba(0,0,0,0.3)' }}
-          >
-            <span style={{ color: 'white', fontSize: '0.75rem', fontWeight: 500 }}>{item.alt}</span>
-          </div>
-        </div>
-      ))}
-    </div>
-  )
-}
-
 export default function CreatingPage() {
   return (
-    <div
-      className="container mx-auto max-w-2xl px-4 py-16 md:py-24"
-      style={{ display: 'flex', flexDirection: 'column', gap: '3.5rem' }}
-    >
-      <section>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'baseline',
-            justifyContent: 'space-between',
-            marginBottom: '0.25rem',
-          }}
-        >
-          <h2 style={{ ...h2Style, marginBottom: 0 }}>Pixel art</h2>
-          <span
-            style={{ color: 'hsl(var(--muted-foreground))', fontSize: '0.75rem', opacity: 0.55 }}
+    <LightboxProvider items={allItems}>
+      <div
+        className="container mx-auto max-w-2xl px-4 py-16 md:py-24"
+        style={{ display: 'flex', flexDirection: 'column', gap: '3.5rem' }}
+      >
+        <section>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'baseline',
+              justifyContent: 'space-between',
+              marginBottom: '0.25rem',
+            }}
           >
-            <span style={{ fontWeight: 500 }}>Medium</span>: Aseprite
-          </span>
-        </div>
-        <p
-          style={{ color: 'hsl(var(--muted-foreground))', lineHeight: 1.7, marginBottom: '1.5rem' }}
-        >
-          A certain 2000s isometric chatroom—whose name I dare not utter here—sparked a pixel art obsession that never really faded.
-        </p>
-        <ImageGrid items={pixelArt} pixelated priorityFirst />
-      </section>
-
-      <section>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'baseline',
-            justifyContent: 'space-between',
-            marginBottom: '0.25rem',
-          }}
-        >
-          <h2 style={{ ...h2Style, marginBottom: 0 }}>Painting</h2>
-          <span
-            style={{ color: 'hsl(var(--muted-foreground))', fontSize: '0.75rem', opacity: 0.55 }}
+            <h2 style={{ ...h2Style, marginBottom: 0 }}>Pixel art</h2>
+            <span
+              style={{ color: 'hsl(var(--muted-foreground))', fontSize: '0.75rem', opacity: 0.55 }}
+            >
+              <span style={{ fontWeight: 500 }}>Medium</span>: Aseprite
+            </span>
+          </div>
+          <p
+            style={{
+              color: 'hsl(var(--muted-foreground))',
+              lineHeight: 1.7,
+              marginBottom: '1.5rem',
+            }}
           >
-            <span style={{ fontWeight: 500 }}>Medium</span>: Acrylics on claybord
-          </span>
-        </div>
-        <p
-          style={{ color: 'hsl(var(--muted-foreground))', lineHeight: 1.7, marginBottom: '1.5rem' }}
-        >
-          Jim Musil&rsquo;s{' '}
-          <a
-            href="https://jimmusil.com/learn"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline underline-offset-4 hover:text-foreground transition-colors"
+            A certain 2000s isometric chatroom—whose name I dare not utter here—sparked a pixel
+            art obsession that never really faded.
+          </p>
+          <ImageGrid items={pixelArt} offset={pixelArtOffset} pixelated priorityFirst />
+        </section>
+
+        <section>
+          <h2 style={h2Style}>Baking</h2>
+          <ImageGrid items={baking} offset={bakingOffset} />
+        </section>
+
+        <section>
+          <h2 style={h2Style}>Sewing</h2>
+          <p
+            style={{
+              color: 'hsl(var(--muted-foreground))',
+              lineHeight: 1.7,
+              marginBottom: '1.5rem',
+            }}
           >
-            landscape
-          </a>{' '}
-          course is brilliant for deconstructing the mechanics. The fear of being crap at a new
-          medium never leaves—I&rsquo;m just getting better at sitting with it.
-        </p>
-        <ImageGrid items={painting} />
-      </section>
-
-      <section>
-        <h2 style={h2Style}>Baking</h2>
-        <ImageGrid items={baking} />
-      </section>
-
-      <section>
-        <h2 style={h2Style}>Sewing</h2>
-        <p
-          style={{ color: 'hsl(var(--muted-foreground))', lineHeight: 1.7, marginBottom: '1.5rem' }}
-        >
-          A desire to hem my own jeans and fix all these oversized tech t-shirts from fitting like dressesヽ(｀Д´#)ﾉ ﾑｷｰ ...has spiralled into a full-blown love for making bags. ( ˶˘ ³˘)♡
-        </p>
-        <ImageGrid items={sewing} />
-      </section>
-    </div>
+            A desire to hem my own jeans and fix all these oversized tech t-shirts from fitting
+            like dressesヽ(｀Д´#)ﾉ ﾑｷｰ ...has spiralled into a full-blown love for making bags. (
+            ˶˘ ³˘)♡
+          </p>
+          <ImageGrid items={sewing} offset={sewingOffset} />
+        </section>
+      </div>
+    </LightboxProvider>
   )
 }
