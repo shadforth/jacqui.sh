@@ -85,7 +85,7 @@ export default function HomePage() {
       </section>
       <section className="mt-2">
         <span className="homepage-last-updated">
-          <span className="font-medium">Last updated</span>: 10 July 2026
+          <span className="font-medium">Last updated</span>: 10 October 2026
         </span>
       </section>
 
