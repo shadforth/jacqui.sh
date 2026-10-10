@@ -1,4 +1,4 @@
-export const LAST_UPDATED = '2026-07-12'
+export const LAST_UPDATED = '2026-10-10'
 
 export interface Book {
   title: string
