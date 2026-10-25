@@ -53,9 +53,9 @@ const bakingOffset = pixelArt.length
 const sewingOffset = pixelArt.length + baking.length
 
 const h2Style = {
-  fontFamily: 'var(--font-dm-sans), sans-serif',
-  fontSize: '1.0rem',
-  fontWeight: 700,
+  fontFamily: 'var(--font-vt323), monospace',
+  fontSize: '1.25rem',
+  fontWeight: 400,
   textTransform: 'uppercase' as const,
   letterSpacing: '0.08em',
   marginBottom: '0.5rem',

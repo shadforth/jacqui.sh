@@ -11,9 +11,9 @@ import { quickLinkClassName } from '@/lib/quick-link'
 import { TrackedLink } from '@/components/TrackedLink'
 
 const h2Style: React.CSSProperties = {
-  fontFamily: 'var(--font-dm-sans), sans-serif',
-  fontSize: '0.85rem',
-  fontWeight: 700,
+  fontFamily: 'var(--font-vt323), monospace',
+  fontSize: '1.1rem',
+  fontWeight: 400,
   letterSpacing: '0.06em',
   color: 'hsl(var(--muted-foreground))',
   marginBottom: '0.5rem',
@@ -144,8 +144,9 @@ export function WritingList({ posts }: WritingListProps) {
                   key={tag}
                   onClick={() => toggleTag(tag)}
                   style={{
-                    fontSize: '0.7rem',
-                    fontWeight: 500,
+                    fontFamily: 'var(--font-vt323), monospace',
+                    fontSize: '0.95rem',
+                    fontWeight: 400,
                     padding: '0.15rem 0.5rem',
                     borderRadius: '9999px',
                     border: `1px solid ${active ? 'hsl(var(--foreground))' : 'hsl(var(--border))'}`,
