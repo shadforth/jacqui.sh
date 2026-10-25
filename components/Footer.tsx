@@ -9,7 +9,7 @@ export function Footer() {
         <Link
           href="/"
           className="text-sm transition-colors"
-          style={{ color: 'hsl(var(--muted-foreground))' }}
+          style={{ color: 'hsl(var(--muted-foreground))', fontFamily: 'var(--font-vt323), monospace', fontSize: '1rem', letterSpacing: '0.06em' }}
         >
           jacqui.sh
         </Link>

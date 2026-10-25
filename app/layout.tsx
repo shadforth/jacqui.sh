@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { DM_Sans, Lora } from 'next/font/google'
+import { DM_Sans, Lora, VT323 } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { Header } from '@/components/Header'
@@ -16,6 +16,13 @@ const lora = Lora({
   variable: '--font-lora',
   display: 'swap',
 })
+const vt323 = VT323({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-vt323',
+  display: 'swap',
+})
+
 
 const siteUrl = 'https://jacqui.sh'
 const siteDescription =
@@ -78,8 +85,8 @@ const personSchema = {
 
 export const viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#f7f5f0' },
-    { media: '(prefers-color-scheme: dark)', color: '#251f1a' },
+    { media: '(prefers-color-scheme: light)', color: '#f5f2ec' },
+    { media: '(prefers-color-scheme: dark)', color: '#1a120a' },
   ],
 }
 
@@ -88,7 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${dmSans.variable} ${lora.variable}`}
+      className={`${dmSans.variable} ${lora.variable} ${vt323.variable}`}
     >
       <head>
         <link rel="dns-prefetch" href="https://ws.audioscrobbler.com" />
