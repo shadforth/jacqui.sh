@@ -27,7 +27,7 @@ export default function ReadingPage() {
   return (
     <div className="container mx-auto max-w-2xl px-4 py-16 md:py-24">
       <div className="reading-header">
-        <h1 className="heading-markazi">Reading</h1>
+        <h1 className="heading-pixel">Reading</h1>
         <span className="reading-last-updated">
           <span className="font-medium">Last updated</span>:{' '}
           {new Date(LAST_UPDATED).toLocaleDateString('en-GB', {
@@ -40,7 +40,7 @@ export default function ReadingPage() {
 
       {grouped.map(([year, books]) => (
         <div key={year}>
-          <h3 className="heading-markazi-sm text-muted mt-7 mb-2">{year}</h3>
+          <h3 className="heading-pixel-sm text-muted mt-7 mb-2">{year}</h3>
           <ul className="reading-books-list">
             {books.map((book, i) => (
               <li

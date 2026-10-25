@@ -31,7 +31,7 @@ const projects = [
   {
     name: 'clouds.jacqui.sh',
     url: 'https://clouds.jacqui.sh',
-    description: 'I just really like clouds.',
+    description: 'I just really like clouds. An exploration on a webpage that starts from the bottom and scrolls upwards.',
     stack: 'Next.js, TypeScript',
     logo: '/media/building/logos/cloud.png',
     logoBg: '#3B6594',
@@ -54,7 +54,7 @@ export default function BuildingPage() {
   return (
     <div className="container mx-auto max-w-2xl px-4 py-16 md:py-24">
       <div className="building-header">
-        <h1 className="heading-markazi">Building</h1>
+        <h1 className="heading-pixel">Building</h1>
         <span className="building-last-updated">
           <span className="font-medium">Last updated</span>: 23 April 2026
         </span>

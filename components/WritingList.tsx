@@ -72,7 +72,7 @@ export function WritingList({ posts }: WritingListProps) {
           marginBottom: '1.8rem',
         }}
       >
-        <h1 className="heading-markazi">Writing</h1>
+        <h1 className="heading-pixel">Writing</h1>
 
         {/* Button + dropdown wrapper */}
         <div style={{ position: 'relative', flexShrink: 0 }}>
