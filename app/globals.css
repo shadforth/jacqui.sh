@@ -938,7 +938,7 @@ body {
 }
 
 /* Typography utilities */
-.heading-markazi {
+.heading-pixel {
   font-family: var(--font-vt323), monospace;
   font-size: 1.25rem;
   font-weight: 400;
@@ -947,7 +947,7 @@ body {
   margin-bottom: 0.25rem;
 }
 
-.heading-markazi-sm {
+.heading-pixel-sm {
   font-family: var(--font-vt323), monospace;
   font-size: 1.1rem;
   font-weight: 400;

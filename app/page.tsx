@@ -20,7 +20,7 @@ export default function HomePage() {
     <div className="container mx-auto max-w-2xl px-4 py-16 md:py-16">
       <section className="hero-section mb-6">
         <div>
-          <h1 className="heading-markazi">
+          <h1 className="heading-pixel">
             Hi! I&rsquo;m Jacqui.
             <NamePronunciation />
           </h1>
@@ -30,7 +30,7 @@ export default function HomePage() {
       </section>
 
       <section className="mb-14">
-        <h2 className="heading-markazi">Quick links</h2>
+        <h2 className="heading-pixel">Quick links</h2>
         <ul className="quick-links-list">
           <li>
             <Link href="/writing" className={quickLinkClassName}>
@@ -63,7 +63,7 @@ export default function HomePage() {
       </section>
 
       <section>
-        <h2 className="heading-markazi flex items-center gap-1.5">
+        <h2 className="heading-pixel flex items-center gap-1.5">
           Me in a nutshell
           <NutshellNut />
         </h2>
