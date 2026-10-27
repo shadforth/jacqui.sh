@@ -43,7 +43,7 @@ export const KindleCard = ({ reading }: { reading: ReadingData }) => {
               alt={reading.title}
               fill
               style={{ objectFit: 'cover', objectPosition: 'left center' }}
-              sizes="140px"
+              sizes="(max-width: 40rem) 100vw, 167px"
               quality={75}
             />
           </div>

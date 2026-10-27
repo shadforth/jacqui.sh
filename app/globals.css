@@ -527,6 +527,20 @@ a.header-brand:hover {
   font-size: 0.74rem;
 }
 
+/* Fill the row on small screens */
+@media (max-width: 39.999rem) {
+  .media-card {
+    width: 100%;
+  }
+
+  .media-card .ipod-screen,
+  .media-card .kindle-screen {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+  }
+}
+
 /* iPod specific styles */
 .ipod-screen {
   width: 115px;
