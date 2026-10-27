@@ -538,6 +538,7 @@ a.header-brand:hover {
     flex: 1;
     width: auto;
     min-width: 0;
+    height: 120px;
   }
 }
 
