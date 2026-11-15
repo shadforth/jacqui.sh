@@ -995,6 +995,8 @@ body {
 .hero-sunrise {
   position: relative;
   overflow: hidden;
+  max-width: 1200px;
+  margin-inline: auto;
   padding-top: 1rem;
 }
 
@@ -1016,7 +1018,7 @@ body {
   position: absolute;
   right: 4%;
   bottom: -12%;
-  width: clamp(120px, 28vw, 380px);
+  width: clamp(120px, 28vw, 320px);
   height: auto;
   animation: hero-sun-rise 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
