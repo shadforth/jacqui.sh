@@ -987,18 +987,36 @@ body {
 }
 
 /* Layout utilities */
+.hero-banner {
+  padding-top: 4rem;
+  padding-inline: clamp(1rem, 4vw, 3rem);
+}
+
 .hero-sunrise {
   position: relative;
   overflow: hidden;
   padding-top: 1rem;
-  border-bottom: 2px solid hsl(var(--foreground));
+}
+
+.hero-sunrise::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: repeating-linear-gradient(
+    90deg,
+    hsl(var(--foreground)) 0 12px,
+    transparent 12px 20px
+  );
 }
 
 .hero-sun {
   position: absolute;
-  right: 2%;
+  right: 4%;
   bottom: -12%;
-  width: clamp(120px, 34vw, 240px);
+  width: clamp(120px, 28vw, 380px);
   height: auto;
   animation: hero-sun-rise 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
@@ -1027,7 +1045,7 @@ body {
 
 .hero-title {
   font-family: var(--font-vt323), monospace;
-  font-size: clamp(3.6rem, 15vw, 7.5rem);
+  font-size: clamp(3.6rem, 12vw, 10rem);
   font-weight: 400;
   line-height: 0.9;
   letter-spacing: -0.01em;
@@ -1036,18 +1054,18 @@ body {
 
 .hero-role {
   margin: 0;
-  font-family: var(--font-serif);
-  font-size: clamp(1.3rem, 4.6vw, 2rem);
-  line-height: 1.15;
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
 }
 
-.hero-role {
-  display: grid;
-}
-
-.hero-role em {
-  padding-left: 1.5em;
-  color: hsl(var(--maroon));
+@media (max-width: 520px) {
+  .hero-role {
+    max-width: 60%;
+    line-height: 1.6;
+  }
 }
 
 .quick-links-list {
