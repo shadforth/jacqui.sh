@@ -3,10 +3,10 @@ export const revalidate = 60
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import HeadshotGreeting from '@/components/HeadshotGreeting'
-import { NamePronunciation } from '@/components/NamePronunciation'
 import { KaomojiWave } from '@/components/KaomojiWave'
 import { NutshellNut } from '@/components/NutshellNut'
 import { CurrentMedia } from '@/components/CurrentMedia'
+import { PixelSun } from '@/components/PixelSun'
 import { quickLinkClassName } from '@/lib/quick-link'
 
 export const metadata: Metadata = {
@@ -18,16 +18,21 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <div className="container mx-auto max-w-2xl px-4 py-16 md:py-16">
-      <section className="hero-section mb-6">
-        <div>
-          <h1 className="heading-pixel">
-            Hi! I&rsquo;m Jacqui.
-            <NamePronunciation />
+      <section className="hero-sunrise mb-4">
+        <PixelSun className="hero-sun" />
+        <div className="hero-copy">
+          <h1 className="hero-title">
+            Hi! I&rsquo;m
+            <br />
+            Jacqui.
           </h1>
-          <p className="text-muted-body">Welcome to my space of personal curiosities.</p>
+          <p className="hero-role">
+            <span>Software developer</span>
+            <em>and designer</em>
+          </p>
         </div>
-        <HeadshotGreeting />
       </section>
+      <p className="text-muted-body mb-10">Welcome to my space of personal curiosities.</p>
 
       <section className="mb-14">
         <h2 className="heading-pixel">Quick links</h2>
@@ -67,6 +72,9 @@ export default function HomePage() {
           Me in a nutshell
           <NutshellNut />
         </h2>
+        <div className="float-right mb-3 ml-5 mt-1">
+          <HeadshotGreeting />
+        </div>
         <div className="text-muted-body content-stack">
           <p>I&rsquo;m an Aussie software developer and designer based in London.</p>
           <p>
