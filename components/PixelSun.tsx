@@ -11,7 +11,14 @@ interface Pixel {
 const GRID = 24
 const CENTRE = (GRID - 1) / 2
 const RADIUS_SQUARED = 132
-const BANDS = ['--maroon', '--rose', '--slate', '--navy']
+// Token name with a fallback, so the sun keeps its colours even if the
+// theme variables have not loaded yet
+const BANDS = [
+  '--maroon, 350 55% 30%',
+  '--rose, 352 38% 48%',
+  '--slate, 215 28% 42%',
+  '--navy, 222 50% 22%',
+]
 
 // Striped sunset drawn on a pixel grid: colour bands top to bottom, with gaps
 // in the lower half like a 70s poster sun
@@ -35,6 +42,8 @@ export const PixelSun = ({ className }: PixelSunProps): React.ReactElement => (
   <svg
     className={className}
     viewBox={`0 0 ${GRID} ${GRID}`}
+    width={240}
+    height={240}
     shapeRendering="crispEdges"
     aria-hidden="true"
     focusable="false"
