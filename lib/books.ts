@@ -1,4 +1,4 @@
-export const LAST_UPDATED = '2026-07-12'
+export const LAST_UPDATED = '2026-11-18'
 
 export interface Book {
   title: string
@@ -12,6 +12,13 @@ export interface Book {
 
 export const books: Book[] = [
   // Read — sorted by date_read desc (undated ones at the end)
+  {
+    title: 'Disposable People: New Slavery in the Global Economy',
+    author: 'Kevin Bales',
+    myRating: 4,
+    dateRead: '2026-11-18',
+    shelf: 'read',
+  },
   {
     title: 'Macbeth: No Fear Shakespeare',
     author: 'William Shakespeare',
