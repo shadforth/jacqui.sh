@@ -20,6 +20,13 @@ export const books: Book[] = [
     shelf: 'read',
   },
   {
+    title: "Motorcycle Roadcraft: The Police Rider's Handbook",
+    author: 'Police Foundation',
+    myRating: 5,
+    dateRead: '2026-07-31',
+    shelf: 'read',
+  },
+  {
     title: 'Macbeth: No Fear Shakespeare',
     author: 'William Shakespeare',
     myRating: 4,
