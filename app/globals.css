@@ -106,8 +106,13 @@
   --foreground: 20 45% 15%;
   --muted-foreground: 25 22% 48%;
   --subheading: 22 32% 32%;
-  --accent: 27 72% 48%;
+  --accent: 350 55% 30%;
   --border: 35 18% 83%;
+  --maroon: 350 55% 30%;
+  --rose: 352 38% 48%;
+  --slate: 215 28% 42%;
+  --navy: 222 50% 22%;
+  --paper: 38 40% 88%;
 }
 
 [data-theme='dark'] {
@@ -115,8 +120,13 @@
   --foreground: 42 60% 84%;
   --muted-foreground: 30 28% 52%;
   --subheading: 30 55% 68%;
-  --accent: 27 88% 56%;
+  --accent: 350 55% 64%;
   --border: 20 38% 20%;
+  --maroon: 350 55% 64%;
+  --rose: 352 40% 78%;
+  --slate: 215 32% 58%;
+  --navy: 222 45% 46%;
+  --paper: 20 40% 16%;
 }
 
 body {
@@ -979,11 +989,106 @@ body {
 }
 
 /* Layout utilities */
-.hero-section {
-  display: flex;
+.hero-banner {
+  padding-top: 4rem;
+  padding-inline: clamp(1rem, 4vw, 3rem);
+}
+
+.hero-cut-paper {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
+  gap: 2.5rem;
+  max-width: 960px;
+  margin-inline: auto;
+}
+
+@media (max-width: 640px) {
+  .hero-cut-paper {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+}
+
+.hero-copy {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.hero-title {
+  font-family: var(--font-gloock), Georgia, serif;
+  font-size: clamp(3rem, 7.5vw, 6.25rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  margin: 0;
+}
+
+.hero-title em {
+  color: hsl(var(--maroon));
+}
+
+.hero-role {
+  margin: 0;
+  font-family: var(--font-space-mono), ui-monospace, monospace;
+  font-size: 0.9rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.tile-grid {
+  --tile: clamp(48px, 7.5vw, 84px);
+  display: grid;
+  grid-template-columns: repeat(3, var(--tile));
+  grid-auto-rows: var(--tile);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: default;
+}
+
+.tile-grid.is-morphing {
+  filter: url(#tile-pixelate);
+}
+
+.tile-grid-filter {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.tile-grid:focus-visible {
+  outline: 2px solid hsl(var(--maroon));
+  outline-offset: 6px;
+}
+
+.tile {
+  display: block;
+  transform-origin: center;
+  /* Stepped timing makes the morph play in chunky frames, like an 8-bit sprite */
+  transition:
+    border-radius 0.6s steps(12, jump-end),
+    transform 0.6s steps(12, jump-end),
+    background-color 0.6s steps(6, jump-end);
+}
+
+.tile:nth-child(3n + 2) {
+  transition-delay: 0.1s;
+}
+
+.tile:nth-child(3n) {
+  transition-delay: 0.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile {
+    transition: none;
+  }
+
+  .tile-grid.is-morphing {
+    filter: none;
+  }
 }
 
 .quick-links-list {
