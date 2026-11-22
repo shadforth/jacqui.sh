@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { DM_Sans, Lora, VT323 } from 'next/font/google'
+import { DM_Sans, Gloock, Lora, Space_Mono, VT323 } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { Header } from '@/components/Header'
@@ -22,7 +22,18 @@ const vt323 = VT323({
   variable: '--font-vt323',
   display: 'swap',
 })
-
+const gloock = Gloock({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-gloock',
+  display: 'swap',
+})
+const spaceMono = Space_Mono({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-space-mono',
+  display: 'swap',
+})
 
 const siteUrl = 'https://jacqui.sh'
 const siteDescription =
@@ -95,7 +106,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${dmSans.variable} ${lora.variable} ${vt323.variable}`}
+      className={`${dmSans.variable} ${lora.variable} ${vt323.variable} ${gloock.variable} ${spaceMono.variable}`}
     >
       <head>
         <link rel="dns-prefetch" href="https://ws.audioscrobbler.com" />

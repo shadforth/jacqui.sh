@@ -8,7 +8,6 @@ export default function HeadshotGreeting() {
         alt="Jacqui Shadforth"
         width={120}
         height={120}
-        priority
         style={{
           objectFit: 'cover',
           borderRadius: '0.5rem',

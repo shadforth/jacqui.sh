@@ -120,7 +120,7 @@ export function Header() {
                   ·{' '}
                 </span>
                 <span
-                  className="transition-colors duration-150 group-hover:text-[hsl(var(--muted-foreground))] hover:text-orange-500 dark:hover:text-orange-400 cursor-pointer"
+                  className="transition-colors duration-150 group-hover:text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--accent))] cursor-pointer"
                   onClick={handleChaoticGoodClick}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ')
