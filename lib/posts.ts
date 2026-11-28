@@ -11,6 +11,9 @@ export type PostMeta = {
   categories?: string[]
   description?: string
   image?: string
+  ogCardImage?: string
+  ogCardImagePosition?: string
+  ogCardImageZoom?: string
   favourite?: boolean
   emojis?: string[]
 }
@@ -32,6 +35,9 @@ export function getAllPosts(): PostMeta[] {
         categories: data.categories,
         description: data.description,
         image: data.image,
+        ogCardImage: data.ogCardImage,
+        ogCardImagePosition: data.ogCardImagePosition,
+        ogCardImageZoom: data.ogCardImageZoom,
         favourite: data.favourite,
         emojis: data.emojis,
       }
@@ -50,6 +56,9 @@ export function getPost(slug: string): Post | null {
     categories: data.categories,
     description: data.description,
     image: data.image,
+    ogCardImage: data.ogCardImage,
+    ogCardImagePosition: data.ogCardImagePosition,
+    ogCardImageZoom: data.ogCardImageZoom,
     favourite: data.favourite,
     emojis: data.emojis,
     content,
