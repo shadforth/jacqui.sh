@@ -92,6 +92,10 @@ This project uses Claude Code and the Superpowers skills system. Invoke skills b
 - **UI work**: `superpowers:brainstorming` followed by `superpowers:writing-plans`
 - **After a major step**: `superpowers:requesting-code-review`
 
+### Visual verification
+
+For any work that produces visible output (UI changes, generated images, new pages, design updates): always open the result in the browser and show a screenshot to Jacqui before wrapping up. Do not go straight to offering commit/PR — show first, ask after.
+
 ## Core principles
 
 - Follow requirements carefully and to the letter. Leave no todos, placeholders, or missing pieces.
